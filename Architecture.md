@@ -1,6 +1,6 @@
 ---
 title: ABOS Architecture
-version: 0.1.0
+version: 0.2.0
 status: foundation
 author: Ryan Rutledge
 last_updated: 2026-07-18
@@ -8,6 +8,7 @@ related:
   - README.md
   - Roadmap.md
   - DevelopmentStandards.md
+  - Businesses/00-Incubator/README.md
 ---
 
 # ABOS Architecture
@@ -46,20 +47,32 @@ flowchart TD
 
 ## Incubator Pipeline
 
-Every new business idea enters through `Businesses/00-Incubator/` and passes through the same ten stages before it earns its own numbered folder:
+Every new business idea enters through [`Businesses/00-Incubator/`](Businesses/00-Incubator/README.md) and passes through the same fifteen stages, split into two phases:
+
+**Phase A — Incubator** (lives entirely inside `Businesses/00-Incubator/`, ends in a decision):
 
 1. Opportunity research
-2. Market validation
-3. Competitor analysis
-4. Pricing
-5. MVP definition
-6. Technical architecture
-7. AI automation opportunities
-8. Marketing strategy
-9. Financial projections
-10. Build/no-build decision
+2. Fast-fail gate — [`IdeaValidationChecklist.md`](Businesses/00-Incubator/IdeaValidationChecklist.md)
+3. Market validation — [`MarketResearchTemplate.md`](Businesses/00-Incubator/MarketResearchTemplate.md)
+4. Competitor analysis
+5. Pricing
+6. MVP definition
+7. Technical architecture
+8. AI automation opportunities
+9. Marketing strategy
+10. Financial projections
+11. Score & decide — [`BusinessScorecard.md`](Businesses/00-Incubator/BusinessScorecard.md) → Build / Revisit / Reject
 
-Only ideas that clear stage 10 with a **build** decision get promoted to `Businesses/NN-Business-Name/`. Ideas that don't clear the bar stay documented inside the incubator as a record of what was considered and why it was rejected — this prevents re-litigating the same idea twice.
+**Phase B — Post-Incubator** (only for ideas scored **Build**, lives in `Businesses/NN-Business-Name/`):
+
+12. Build
+13. Launch — [`LaunchChecklist.md`](Businesses/00-Incubator/LaunchChecklist.md)
+14. Scale
+15. Archive or expand
+
+The fast-fail gate (stage 2) exists separately from scoring (stage 11) on purpose: it kills obviously-bad ideas cheaply before any research time is spent, while the scorecard makes the final call once real research is in hand.
+
+Only ideas that clear stage 11 with a **build** decision get promoted to `Businesses/NN-Business-Name/`. Ideas that don't clear the bar stay documented inside the incubator as a record of what was considered and why it was rejected — this prevents re-litigating the same idea twice. See [`Businesses/00-Incubator/README.md`](Businesses/00-Incubator/README.md) for how ideas are tracked per-idea within the folder.
 
 ## Business Folder Anatomy
 
