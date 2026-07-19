@@ -14,8 +14,8 @@
  * it twice against the same base will duplicate everything. Clear the
  * base first if re-seeding.
  */
-import * as dotenv from "dotenv";
-dotenv.config({ path: "local.settings.json" });
+import { loadLocalSettings } from "../lib/loadLocalSettings";
+loadLocalSettings();
 
 import Airtable from "airtable";
 import * as fs from "fs";

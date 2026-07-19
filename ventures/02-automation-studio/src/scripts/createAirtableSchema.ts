@@ -34,8 +34,8 @@
  *      to add the handful of formula/rollup/lookup fields by hand.
  *   4. npm run seed
  */
-import * as dotenv from "dotenv";
-dotenv.config({ path: "local.settings.json" });
+import { loadLocalSettings } from "../lib/loadLocalSettings";
+loadLocalSettings();
 
 const apiKey = process.env.AIRTABLE_API_KEY;
 const baseId = process.env.AIRTABLE_BASE_ID;
