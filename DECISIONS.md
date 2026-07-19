@@ -111,12 +111,24 @@ Repo-wide architectural and governance decisions. Mirrors the per-venture `DECIS
 
 **Why:** the repo's own philosophy treats ABOS as a living, multi-venture system rather than a strict one-at-a-time sequence — see [README.md § Mission](README.md#mission). Forcing ventures to complete in strict numeric order would subordinate a real, time-sensitive financial need to an arbitrary ordering rule.
 
-## ChatGPT and Claude Code collaborate via structured handoffs relayed by Ryan
+## ChatGPT and Claude Code collaborate via structured handoffs relayed by Ryan — SUPERSEDED
 
-**Date:** 2026-07-18
+**Date:** 2026-07-18 (decided); superseded same day
 
 **Context:** Ryan works with both ChatGPT and Claude Code on this repository — ChatGPT for early drafting/research/architecture proposals, Claude Code for verification, reconciliation against the existing repo, and implementation.
 
 **Decision:** Claude Code appends a structured handoff summary at the end of substantive responses, for Ryan to relay back to ChatGPT, so both tools stay in sync on what changed and what's next without Ryan having to reconstruct it from scratch each time.
 
 **Why:** an explicit handoff format is lower-friction than Ryan manually summarizing context for the other tool every time work moves between them.
+
+**Superseded by:** "ChatGPT excluded from the process" below, same day — after two rounds of ChatGPT-proposed governance changes competed with actually shipping content, Ryan decided to exclude ChatGPT going forward. Claude Code is the sole assistant on this repo as of this entry.
+
+## ChatGPT excluded from the process
+
+**Date:** 2026-07-18
+
+**Context:** After the governance back-and-forth in the two entries above and the incubator idea batch, Ryan decided to work with Claude Code alone going forward rather than continuing the ChatGPT-drafts/Claude-Code-verifies workflow.
+
+**Decision:** No more structured handoff messages to ChatGPT. Claude Code operates directly on Ryan's instructions without relaying context to or from ChatGPT.
+
+**Why:** Ryan's own call — not something Claude Code should second-guess or revert without him raising it again.

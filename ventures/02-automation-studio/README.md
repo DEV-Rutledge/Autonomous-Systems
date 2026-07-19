@@ -1,6 +1,6 @@
 ---
 title: Automation Studio
-version: 0.1.0
+version: 0.2.0
 status: draft
 author: Ryan Rutledge
 last_updated: 2026-07-18
@@ -11,7 +11,7 @@ related:
 
 # Automation Studio
 
-Productized automation-building service — bespoke Make.com/n8n/Azure Functions systems built and maintained for other businesses, with a Microsoft 365/Teams/Azure niche angle and an AI-agent premium tier. Promoted from the incubator on 2026-07-18 as the venture most likely to close the gap from ~$4,000/mo to ~$10,000/mo quickly, given real time and financial constraints — see [`PROJECT_CONTEXT.md`](PROJECT_CONTEXT.md).
+Custom AI agents embedded in Microsoft Teams that read and act on real business data — starting with Airtable, generalizing to other backends. Not a notification integration (those are commoditized); a conversational agent that takes real actions. Promoted from the incubator on 2026-07-18, sharpened the same day once Ryan's actual strongest skill (Teams bots on Azure Functions + Airtable) came into focus — see [`PROJECT_CONTEXT.md`](PROJECT_CONTEXT.md).
 
 **Start here:**
 
