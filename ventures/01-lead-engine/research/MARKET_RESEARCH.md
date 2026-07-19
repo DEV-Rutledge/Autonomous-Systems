@@ -5,12 +5,12 @@ status: draft
 author: Ryan Rutledge
 last_updated: 2026-07-18
 related:
-  - ../docs/BusinessPlan.md
+  - ../docs/BUSINESS_PLAN.md
 ---
 
 # Market Research Log
 
-Raw findings backing the assumptions in [`docs/BusinessPlan.md`](../docs/BusinessPlan.md). This is a living log — add to it as real discovery calls happen (incubator stage 3); don't just trust secondary research forever.
+Raw findings backing the assumptions in [`docs/BUSINESS_PLAN.md`](../docs/BUSINESS_PLAN.md). This is a living log — add to it as real discovery calls happen (incubator stage 3); don't just trust secondary research forever.
 
 ## Table of Contents
 
@@ -93,7 +93,7 @@ From industry write-ups on small-business lead generation challenges ([Inc.](htt
 
 These are the things secondary research can't answer — need real conversations with 10–15 target operators (incubator stage 3) before locking in the scorecard decision:
 
-- Actual willingness to pay at each tier — is $149/$349/$799 (see [BusinessPlan.md § Pricing](../docs/BusinessPlan.md#pricing)) realistic, or does it need adjusting?
+- Actual willingness to pay at each tier — is $149/$349/$799 (see [BUSINESS_PLAN.md § Pricing](../docs/BUSINESS_PLAN.md#pricing)) realistic, or does it need adjusting?
 - How much of the "AI qualification" value prop actually lands with a skeptical, non-technical buyer vs. sounding like hype?
 - Which existing tool (if any) is the true incumbent to displace — ServiceTitan/Jobber/Housecall Pro (operations software they already trust), or nothing (spreadsheets/memory)?
-- TCPA compliance requirements for automated SMS/voice follow-up — needs actual legal review, not just a research note (see [BusinessPlan.md § Risks](../docs/BusinessPlan.md#risks))
+- TCPA compliance requirements for automated SMS/voice follow-up — needs actual legal review, not just a research note (see [BUSINESS_PLAN.md § Risks](../docs/BUSINESS_PLAN.md#risks))

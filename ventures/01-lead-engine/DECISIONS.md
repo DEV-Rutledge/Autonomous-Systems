@@ -6,7 +6,7 @@ author: Ryan Rutledge
 last_updated: 2026-07-18
 related:
   - PROJECT_CONTEXT.md
-  - docs/BusinessPlan.md
+  - docs/BUSINESS_PLAN.md
 ---
 
 # Decision Log
@@ -21,7 +21,7 @@ related:
 - Accept as-is and flesh out later
 - Accept and lightly reformat (frontmatter/TOC only, like the incubator docs in Batch 2)
 
-**Decision:** Discard Batch 3 entirely and rewrite from scratch to a much higher bar — 15–40 pages of genuinely researched documentation per major doc, modeled on Stripe/Linear-quality internal docs rather than AI-generated notes. Pricing, market size, and competitor claims must be backed by real research (see [`research/MarketResearch.md`](research/MarketResearch.md)), not invented numbers.
+**Decision:** Discard Batch 3 entirely and rewrite from scratch to a much higher bar — 15–40 pages of genuinely researched documentation per major doc, modeled on Stripe/Linear-quality internal docs rather than AI-generated notes. Pricing, market size, and competitor claims must be backed by real research (see [`research/MARKET_RESEARCH.md`](research/MARKET_RESEARCH.md)), not invented numbers.
 
 **Why:** thin scaffolding doesn't give Claude Code enough to implement against without repeatedly stopping to ask design questions that should already be answered — defeats the purpose of documentation-first development.
 
@@ -37,6 +37,6 @@ related:
 
 **Date:** 2026-07-18
 
-**Context:** `docs/BusinessPlan.md` derives Starter/Growth/Scale pricing ($149/$349/$799) from competitor anchors and ROI logic, since no real customer discovery calls have happened yet.
+**Context:** `docs/BUSINESS_PLAN.md` derives Starter/Growth/Scale pricing ($149/$349/$799) from competitor anchors and ROI logic, since no real customer discovery calls have happened yet.
 
-**Decision:** Documented explicitly as unvalidated in both `docs/BusinessPlan.md` and `research/MarketResearch.md § Open Questions`, rather than presented as final. Real discovery calls (incubator stage 3) should confirm or revise before this venture is scored at stage 11.
+**Decision:** Documented explicitly as unvalidated in both `docs/BUSINESS_PLAN.md` and `research/MARKET_RESEARCH.md § Open Questions`, rather than presented as final. Real discovery calls (incubator stage 3) should confirm or revise before this venture is scored at stage 11.

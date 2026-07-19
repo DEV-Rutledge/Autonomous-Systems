@@ -7,7 +7,7 @@ last_updated: 2026-07-18
 related:
   - ../CLAUDE.md
   - ../PROJECT_CONTEXT.md
-  - ../research/MarketResearch.md
+  - ../research/MARKET_RESEARCH.md
   - ../../../ventures/00-incubator/BusinessScorecard.md
 ---
 
@@ -15,7 +15,7 @@ related:
 
 **Venture:** `ventures/01-lead-engine/` — an AI-native lead qualification, nurture, and booking platform for local home-services businesses.
 
-> **Status note:** this is the first full pass through incubator stages 3–10, superseding the earlier one-line stub version. It is grounded in real secondary research (see [`research/MarketResearch.md`](../research/MarketResearch.md)) but has **not yet been validated against real discovery calls** with target operators — that's the next step before stage 11 scoring. Assumptions that need real-world validation are flagged explicitly throughout rather than presented as settled fact.
+> **Status note:** this is the first full pass through incubator stages 3–10, superseding the earlier one-line stub version. It is grounded in real secondary research (see [`research/MARKET_RESEARCH.md`](../research/MARKET_RESEARCH.md)) but has **not yet been validated against real discovery calls** with target operators — that's the next step before stage 11 scoring. Assumptions that need real-world validation are flagged explicitly throughout rather than presented as settled fact.
 
 ## Table of Contents
 
@@ -60,7 +60,7 @@ Give every local service business AI-powered lead capture, qualification, nurtur
 
 ## Problem
 
-Small service-business owners lose winnable jobs not because demand doesn't exist, but because of structural response and process failures — all independently validated in secondary research (see [`research/MarketResearch.md § Validated Pain Points`](../research/MarketResearch.md#validated-pain-points)):
+Small service-business owners lose winnable jobs not because demand doesn't exist, but because of structural response and process failures — all independently validated in secondary research (see [`research/MARKET_RESEARCH.md § Validated Pain Points`](../research/MARKET_RESEARCH.md#validated-pain-points)):
 
 1. **Inconsistent lead volume** — the most commonly cited top issue among small business owners.
 2. **The owner is the bottleneck** — sales, marketing, and the service work all run through one person's time.
@@ -73,10 +73,10 @@ Lead Engine's product surface maps directly onto these: AI qualification address
 
 ## Market Size
 
-Market-sizing data for this category is inconsistent across research firms (a sign of a fragmented, immature reporting landscape rather than a small market) — see full spread in [`research/MarketResearch.md § Market Size`](../research/MarketResearch.md#market-size).
+Market-sizing data for this category is inconsistent across research firms (a sign of a fragmented, immature reporting landscape rather than a small market) — see full spread in [`research/MARKET_RESEARCH.md § Market Size`](../research/MARKET_RESEARCH.md#market-size).
 
 - **TAM:** Global lead generation software market, ~$6.4B (2026) growing to ~$8.9B by 2030 (one estimate; a competing estimate puts 2026 at $9.87B — treat both as directional, not precise).
-- **SAM:** US home-services businesses in the initial three sub-verticals (HVAC, plumbing, electrical). Even the most conservative count puts this at ~120,000–260,000 firms, roughly 70% with fewer than 10 employees — squarely the target persona. See [`research/MarketResearch.md § Target Sub-Vertical Sizing`](../research/MarketResearch.md#target-sub-vertical-sizing).
+- **SAM:** US home-services businesses in the initial three sub-verticals (HVAC, plumbing, electrical). Even the most conservative count puts this at ~120,000–260,000 firms, roughly 70% with fewer than 10 employees — squarely the target persona. See [`research/MARKET_RESEARCH.md § Target Sub-Vertical Sizing`](../research/MARKET_RESEARCH.md#target-sub-vertical-sizing).
 - **SOM (Year 1):** 100–300 paying customers is under 0.25% penetration of the SAM even at the low end of the firm-count estimates. Market size is not the constraint on this business — go-to-market execution and CAC efficiency are (see [CAC](#cac) and [Go-To-Market](#go-to-market)).
 
 ## Competitor Analysis
@@ -118,11 +118,11 @@ See [Problem](#problem) for the full breakdown with sourcing. Summarized by prod
 
 ## Revenue Model
 
-Subscription SaaS, billed monthly, tiered primarily by lead volume and feature depth rather than seats (this ICP is mostly single-decision-maker businesses where per-seat pricing doesn't map to value the way it does in larger B2B). A usage-based overage component for leads beyond the tier cap follows the 2026 trend toward flexible, usage-anchored SaaS pricing rather than rigid flat tiers (see [`research/MarketResearch.md § Competitor Pricing`](../research/MarketResearch.md#competitor-pricing)).
+Subscription SaaS, billed monthly, tiered primarily by lead volume and feature depth rather than seats (this ICP is mostly single-decision-maker businesses where per-seat pricing doesn't map to value the way it does in larger B2B). A usage-based overage component for leads beyond the tier cap follows the 2026 trend toward flexible, usage-anchored SaaS pricing rather than rigid flat tiers (see [`research/MARKET_RESEARCH.md § Competitor Pricing`](../research/MARKET_RESEARCH.md#competitor-pricing)).
 
 ## Pricing
 
-**This is a hypothesis, not a conclusion** — see [`research/MarketResearch.md § Open Questions`](../research/MarketResearch.md#open-questions-for-real-discovery-calls). It's derived from two anchors: competitor price points, and the ROI logic that a single booked HVAC/plumbing job is typically worth $300–$800+ in ticket value, so a tool that reliably books even a few extra jobs a month easily justifies a few hundred dollars in monthly spend.
+**This is a hypothesis, not a conclusion** — see [`research/MARKET_RESEARCH.md § Open Questions`](../research/MARKET_RESEARCH.md#open-questions-for-real-discovery-calls). It's derived from two anchors: competitor price points, and the ROI logic that a single booked HVAC/plumbing job is typically worth $300–$800+ in ticket value, so a tool that reliably books even a few extra jobs a month easily justifies a few hundred dollars in monthly spend.
 
 | Tier | Price | What's Included | Target Persona |
 |---|---|---|---|
@@ -149,7 +149,7 @@ Positioning rationale: sits below full-service agencies ($2,500+/mo) by 3–15x,
 
 **Phase 2 (90–180 days) — partner channel:** Integrate as a marketplace app with ServiceTitan, Housecall Pro, and/or Jobber — tools this ICP already trusts and uses daily — to piggyback on their distribution rather than competing for cold attention. Launch a referral program for existing customers (this ICP trusts peer recommendations from other operators heavily).
 
-**Phase 3 (180+ days) — paid acquisition:** Only once CAC payback is proven organically (under 12 months, per the [SMB benchmark](../research/MarketResearch.md#smb--vertical-saas-economics)) — home-services keywords are expensive, dominated by well-funded national aggregators (Angi, HomeAdvisor, Thumbtack), so paid search is a scaling lever, not a starting one.
+**Phase 3 (180+ days) — paid acquisition:** Only once CAC payback is proven organically (under 12 months, per the [SMB benchmark](../research/MARKET_RESEARCH.md#smb--vertical-saas-economics)) — home-services keywords are expensive, dominated by well-funded national aggregators (Angi, HomeAdvisor, Thumbtack), so paid search is a scaling lever, not a starting one.
 
 ## SEO
 
@@ -171,13 +171,13 @@ These terms have lower search volume but dramatically higher buyer intent — so
 
 ## Sales Funnel
 
-Free, opt-in trial with **no credit card required** — the target buyer is not software-savvy and is inherently skeptical of new tools; optimizing for trust over short-term conversion-rate optics is the right tradeoff here (opt-in-no-CC trials benchmark at a 14% median conversion vs. 4–6% for generic self-serve trials — see [`research/MarketResearch.md § Trial Conversion Benchmarks`](../research/MarketResearch.md#trial-conversion-benchmarks)).
+Free, opt-in trial with **no credit card required** — the target buyer is not software-savvy and is inherently skeptical of new tools; optimizing for trust over short-term conversion-rate optics is the right tradeoff here (opt-in-no-CC trials benchmark at a 14% median conversion vs. 4–6% for generic self-serve trials — see [`research/MARKET_RESEARCH.md § Trial Conversion Benchmarks`](../research/MARKET_RESEARCH.md#trial-conversion-benchmarks)).
 
 Funnel: **Trial signup → guided onboarding call (not fully self-serve — this buyer needs hand-holding) → 14-day trial with real leads flowing through the system → paid conversion.** The guided onboarding step is a deliberate deviation from a pure self-serve motion; it raises short-term CAC but is necessary given this buyer's low software literacy, and is the mechanism that should also drive the lower, vertical-SaaS-style churn assumed in [LTV](#ltv).
 
 ## CAC
 
-Target blended CAC: **$150–$300/customer**, within the general SMB benchmark range of $100–$400 (see [`research/MarketResearch.md § SMB / Vertical SaaS Economics`](../research/MarketResearch.md#smb--vertical-saas-economics)), achieved primarily through the low-CAC organic and partner channels in [Go-To-Market](#go-to-market) Phases 1–2 before any paid acquisition is added.
+Target blended CAC: **$150–$300/customer**, within the general SMB benchmark range of $100–$400 (see [`research/MARKET_RESEARCH.md § SMB / Vertical SaaS Economics`](../research/MARKET_RESEARCH.md#smb--vertical-saas-economics)), achieved primarily through the low-CAC organic and partner channels in [Go-To-Market](#go-to-market) Phases 1–2 before any paid acquisition is added.
 
 ## LTV
 
@@ -193,7 +193,7 @@ Sanity-checking against the researched benchmark rather than taking either numbe
 1. **CAC creep at scale** — home-services keywords are expensive and dominated by well-funded national aggregators (Angi, HomeAdvisor, Thumbtack); organic/partner-channel CAC will not hold once paid acquisition is needed to keep growing.
 2. **Distribution dependency** — the Phase 2 marketplace-partner strategy (ServiceTitan/Jobber/Housecall Pro) creates real gatekeeper risk: any of these platforms could restrict marketplace access or build a competing native feature.
 3. **AI qualification accuracy** — a wrongly qualified or dropped lead is a direct dollar cost to a small operator with thin margins; trust erodes fast if the AI errs, faster than for a typical software bug.
-4. **Regulatory/compliance (TCPA)** — automated SMS and voice follow-up is subject to US TCPA rules; this needs real legal review before launch, not just a research note (flagged in [`research/MarketResearch.md § Open Questions`](../research/MarketResearch.md#open-questions-for-real-discovery-calls)).
+4. **Regulatory/compliance (TCPA)** — automated SMS and voice follow-up is subject to US TCPA rules; this needs real legal review before launch, not just a research note (flagged in [`research/MARKET_RESEARCH.md § Open Questions`](../research/MARKET_RESEARCH.md#open-questions-for-real-discovery-calls)).
 5. **Vertical concentration** — early reliance on HVAC/plumbing/electrical means seasonal demand swings or a regional economic downturn hit disproportionately hard before [Expansion](#expansion) into other verticals is underway.
 
 ## Financial Model

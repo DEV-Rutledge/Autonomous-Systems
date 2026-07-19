@@ -6,7 +6,7 @@ author: Ryan Rutledge
 last_updated: 2026-07-18
 related:
   - PROJECT_CONTEXT.md
-  - docs/BusinessPlan.md
+  - docs/BUSINESS_PLAN.md
   - ../../DevelopmentStandards.md
 ---
 
@@ -16,7 +16,7 @@ Read [`PROJECT_CONTEXT.md`](PROJECT_CONTEXT.md) first — this file only covers 
 
 ## Current State
 
-Pre-build. Only `docs/BusinessPlan.md` and `research/MarketResearch.md` exist. No code yet. Don't scaffold an application here without checking with Ryan first — the plan's assumptions (pricing, ICP) still need real validation per [`PROJECT_CONTEXT.md § Current Stage`](PROJECT_CONTEXT.md#current-stage).
+Pre-build. Only `docs/BUSINESS_PLAN.md` and `research/MARKET_RESEARCH.md` exist. No code yet. Don't scaffold an application here without checking with Ryan first — the plan's assumptions (pricing, ICP) still need real validation per [`PROJECT_CONTEXT.md § Current Stage`](PROJECT_CONTEXT.md#current-stage).
 
 ## Coding Conventions (once build starts)
 

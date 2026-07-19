@@ -1,6 +1,6 @@
 ---
 title: ABOS Architecture
-version: 0.3.0
+version: 0.5.0
 status: foundation
 author: Ryan Rutledge
 last_updated: 2026-07-18
@@ -80,13 +80,15 @@ Once promoted, every venture folder follows the same deep structure — organize
 
 ```
 ventures/NN-venture-slug/
+├── README.md              # Short human-facing index — what's here, where to look
 ├── CLAUDE.md              # Context + coding instructions for Claude Code
 ├── GPT.md                 # Prompts/instructions for ChatGPT / Codex
 ├── PROJECT_CONTEXT.md     # Architecture and conventions specific to this venture
 ├── DECISIONS.md           # Architectural decisions and rationale (decision log)
+├── CHANGELOG.md           # Chronological log of what shipped, in order
 │
-├── docs/                  # BusinessPlan.md and other overview/strategy docs
-├── research/              # Market research, competitor research, sources backing every assumption in docs/
+├── docs/                  # BUSINESS_PLAN.md and other overview/strategy docs
+├── research/              # MARKET_RESEARCH.md (the flagship, gold-standard doc — see DevelopmentStandards.md) and other sources backing docs/
 ├── architecture/          # Technical architecture, system design, service boundaries
 ├── database/              # Schema, ER diagrams, migrations strategy
 ├── api/                   # API contracts and endpoint specs
@@ -101,11 +103,29 @@ ventures/NN-venture-slug/
 └── diagrams/                   # Standalone diagram assets, if a diagram doesn't fit inline
 ```
 
-The four root-level files (`CLAUDE.md`, `GPT.md`, `PROJECT_CONTEXT.md`, `DECISIONS.md`) stay at the venture's top level, not nested in a subfolder — an agent opening the folder needs to find them immediately without digging. Everything else is organized by function into its subfolder.
+The six root-level files (`README.md`, `CLAUDE.md`, `GPT.md`, `PROJECT_CONTEXT.md`, `DECISIONS.md`, `CHANGELOG.md`) stay at the venture's top level, not nested in a subfolder — an agent (or Ryan) opening the folder needs to find them immediately without digging. `README.md` and `PROJECT_CONTEXT.md` have distinct, non-overlapping jobs: `README.md` is a short human-facing tour of the folder (what's here, where to look — same role the incubator's own `README.md` plays); `PROJECT_CONTEXT.md` is the longer AI-agent context primer (scope, constraints, current stage). Everything else is organized by function into its subfolder.
 
 This is the minimum set. Individual ventures can add more docs or subfolders as needed, but should not remove any of the above without a note in that venture's own `DECISIONS.md`.
 
-Depth matters here: a subfolder like `architecture/` or `database/` is expected to hold real, researched documentation (tens of pages, not a bullet list) once a venture is actively being built — enough for Claude Code to implement against without repeatedly stopping to ask design questions that should already be answered.
+Depth matters here: a subfolder like `architecture/` or `database/` is expected to hold real, researched documentation once a venture is actively being built — enough that a senior engineer who has never spoken to Ryan could read it and start implementing confidently, not a bullet-point stub.
+
+### Document Dependency Chain
+
+Flagship documents within a venture build on each other in a specific order — each one should cite the documents before it rather than re-deriving or duplicating their conclusions:
+
+```
+research/MARKET_RESEARCH.md   (gold standard — demand, competitors, pricing evidence)
+        ↓
+docs/BUSINESS_PLAN.md          (business decisions, cited against the research above)
+        ↓
+PROJECT_CONTEXT.md             (scope, constraints, principles — once we know what we're building)
+        ↓
+architecture/TECHNICAL_ARCHITECTURE.md   (technology choices, justified rather than assumed)
+        ↓
+database/, api/, automation/, prompts/    (implementation-level specs)
+```
+
+`MARKET_RESEARCH.md` is deliberately first and is the gold-standard document for the whole venture: its job isn't to decide what to build, it's to establish whether there's real demand, who pays, how much, and what competitors are missing — with evidence, not assumptions. Every downstream document should be easier and more reliable to write because it's citing researched fact rather than guessing. See [`ventures/01-lead-engine/research/MARKET_RESEARCH.md`](ventures/01-lead-engine/research/MARKET_RESEARCH.md) once it's rebuilt to this standard, and [DevelopmentStandards.md § File & Folder Naming](DevelopmentStandards.md#file--folder-naming) for why flagship docs use `SCREAMING_SNAKE_CASE`.
 
 ## Shared vs. Per-Venture
 

@@ -1,6 +1,6 @@
 ---
 title: AI Business Operating System (ABOS)
-version: 0.3.0
+version: 0.5.0
 status: foundation
 author: Ryan Rutledge
 last_updated: 2026-07-18
@@ -9,6 +9,10 @@ related:
   - Architecture.md
   - DevelopmentStandards.md
   - TechStack.md
+  - DECISIONS.md
+  - CURRENT_STATE.md
+  - CHANGELOG.md
+  - LESSONS_LEARNED.md
 ---
 
 # AI Business Operating System (ABOS)
@@ -88,6 +92,10 @@ Autonomous Systems/
 ├── Architecture.md            # How the repo/system fits together
 ├── DevelopmentStandards.md    # Coding, docs, and repo conventions
 ├── TechStack.md               # Approved tools and services
+├── DECISIONS.md               # Repo-wide governance/architecture decision log
+├── CURRENT_STATE.md           # Living status doc — what's built, what's next
+├── CHANGELOG.md               # Chronological log of what shipped
+├── LESSONS_LEARNED.md         # Retrospective/postmortem knowledge
 │
 ├── ventures/
 │   ├── 00-incubator/          # Every new idea starts here — see below
@@ -116,7 +124,7 @@ Autonomous Systems/
 
 ## Business Requirements
 
-Every business added to this repository must be:
+Every venture added to this repository must be:
 
 - ✅ Subscription revenue preferred
 - ✅ Easily scalable
@@ -134,11 +142,14 @@ The repository itself is versioned as it grows:
 | Version | Milestone |
 |---|---|
 | 0.1 | Repository Foundation |
-| 0.2 | Shared Components |
-| 0.3 | Venture #1 |
-| 0.4 | Venture #2 |
+| 0.2 | Incubator Pipeline Docs |
+| 0.3 | Ventures Restructure |
+| 0.4 | Venture #1 (Lead Engine) Kickoff |
+| 0.5 | Governance & Documentation Standards |
 | ... | ... |
 | 1.0 | Launch Ready |
+
+This table tracks actual repo history, not a fixed plan — see [DECISIONS.md](DECISIONS.md) and [CURRENT_STATE.md](CURRENT_STATE.md) for what's behind each milestone.
 
 See [Roadmap.md](Roadmap.md) for the full phase breakdown.
 
@@ -152,3 +163,7 @@ Every new venture idea — no exceptions — starts in [`ventures/00-incubator/`
 - [Architecture.md](Architecture.md) — how pieces of the system connect
 - [DevelopmentStandards.md](DevelopmentStandards.md) — conventions for code and docs
 - [TechStack.md](TechStack.md) — approved tools and services
+- [DECISIONS.md](DECISIONS.md) — repo-wide governance and architecture decision log
+- [CURRENT_STATE.md](CURRENT_STATE.md) — living status: what's built, what's next
+- [CHANGELOG.md](CHANGELOG.md) — chronological log of what shipped
+- [LESSONS_LEARNED.md](LESSONS_LEARNED.md) — retrospective/postmortem knowledge

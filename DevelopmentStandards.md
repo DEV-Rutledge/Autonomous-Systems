@@ -1,6 +1,6 @@
 ---
 title: ABOS Development Standards
-version: 0.2.0
+version: 0.3.0
 status: foundation
 author: Ryan Rutledge
 last_updated: 2026-07-18
@@ -40,18 +40,19 @@ Every Markdown file in this repository should include:
 
 - Folders: `PascalCase` for top-level concept folders at the repo root (`ventures/` and its contents are the exception — see below — `Shared/`), `kebab-case` or `NN-Title-Case` for other specific instances (`Prompt-Library`)
 - `ventures/` and everything under it is all-lowercase-kebab-case (`ventures/00-incubator/`, `ventures/01-lead-engine/`, and its subfolders `docs/`, `prompts/`, `architecture/`, `automation/`, `api/`, `database/`, `deployment/`, `marketing/`, `finance/`, `sales/`, `legal/`, `research/`, `tasks/`, `diagrams/`) — this is the one deliberate break from PascalCase, matching how real software companies name repo paths
-- Files: `PascalCase.md` for docs (`BusinessPlan.md`, `DECISIONS.md` is the one all-caps exception, matching the agent-context file convention below)
+- Files: `PascalCase.md` is the general default for docs (`Architecture.md`, `Roadmap.md`)
+- **Flagship venture documents use `SCREAMING_SNAKE_CASE.md`** — this includes the agent-context files (`CLAUDE.md`, `GPT.md`, `PROJECT_CONTEXT.md`, `DECISIONS.md`, `TASKS.md`) *and* the primary strategy/research documents inside a venture's subfolders (`MARKET_RESEARCH.md`, `BUSINESS_PLAN.md`, `TECHNICAL_ARCHITECTURE.md`). The all-caps styling is a deliberate visual signal: these are the documents everything else in the venture should cite and build on — see [Architecture.md § Document Dependency Chain](Architecture.md#document-dependency-chain). Supporting/working documents within the same subfolder (e.g. a raw interview transcript in `research/`) can stay `PascalCase.md`.
 - Numbered venture folders always use two-digit prefixes (`01-`, `02-`, ... `10-`) so they sort correctly past nine ventures, and are named only after clearing the incubator (no speculative placeholder names)
 
 ## Versioning
 
 - The repository as a whole is versioned per [README.md](README.md#versioning) (0.1 → 1.0 milestones)
-- Individual businesses are versioned independently once they exist, starting at `0.1.0` at scaffold time
+- Individual ventures are versioned independently once they exist, starting at `0.1.0` at scaffold time
 - Bump the `version` field in a doc's frontmatter whenever its content changes in a way that would matter to someone who read the previous version
 
 ## Decision Logs
 
-Every business's `DECISIONS.md` (and this repo's own decision history, once one exists) records:
+Every venture's `DECISIONS.md`, and the repo's own root-level [`DECISIONS.md`](DECISIONS.md) for governance/architecture decisions that apply across ventures, record:
 
 - **Decision** — what was decided
 - **Date**
