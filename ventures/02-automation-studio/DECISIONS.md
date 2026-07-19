@@ -11,6 +11,46 @@ related:
 
 # Decision Log
 
+## Corrected: niche means client type, not product type — restructured as a modular platform
+
+**Date:** 2026-07-19
+
+**Context:** The prior two "sharpened positioning" passes narrowed all the way down to "new-hire onboarding" as *the* product, sold to any SMB. Ryan corrected this: when he said "niche" earlier, he meant serving specific *types of client* well across many use cases (onboarding, logistics, accounting, marketing, dev — comparable to a general orchestration bot like Slack's Tag), not narrowing to one thin product. He was explicit that a bare onboarding pitch would "make companies yawn" compared to onboarding delivered *within* an orchestrated bot network that works with a team as they actually communicate.
+
+**Decision:** Restructured Automation Studio as a modular Teams-embedded orchestration platform. Every module (onboarding, vehicle/asset tracking, future modules) follows the same underlying pattern — see [`architecture/TECHNICAL_ARCHITECTURE.md § Platform Pattern`](architecture/TECHNICAL_ARCHITECTURE.md#platform-pattern). Onboarding is module 1, not the whole product.
+
+**Why:** a real correction, not a refinement — the earlier framing would have undersold the platform in every sales conversation and boxed the venture into a single feature rather than the extensible system Ryan actually wants to build.
+
+## Primary niche: logistics/fleet, with restaurant and software-development as named future niches
+
+**Date:** 2026-07-19
+
+**Context:** Ryan named three-to-four areas of real personal expertise — restaurant, software development, logistics, and rental/fleet management — and was explicit that he wants to eventually serve a curated set of a few niche industries, not one industry forever and not everyone. He assessed logistics as likely the best ROI despite real competition, based on his own read of where the money is.
+
+**Decision:** Logistics/fleet is the primary niche to build for now. Restaurant and software-development are documented as real future niches, not built or researched yet.
+
+**Why:** matches Ryan's own risk-adjusted read of where the money is, and building for one niche at a time is the only way to stay consistent with the time constraint (10–20 hrs/week) — see the "niche-spreading risk" noted in [`research/MARKET_RESEARCH.md § Risks`](research/MARKET_RESEARCH.md#risks). This does not reopen or deprioritize the "one niche at a time" principle established when onboarding-vs-multiple-bases was decided — it applies the same discipline at the industry level now that there are multiple named future niches, not just multiple modules.
+
+## Fleet-rental work built independently — no proprietary employer code or data used
+
+**Date:** 2026-07-19
+
+**Context:** Ryan has previously built an autonomous fleet-rental asset management system as an employee; that codebase and data belong to his employer. He asked whether he could show Claude Code the code to speed up design work.
+
+**Decision:** Declined — Claude Code will not review, reference, or be shown that codebase or any of its data. Module 2 (vehicle/asset issue tracking) and any future fleet-related module are designed from Ryan's own verbal description of general concepts and requirements, and built as an original, independent implementation.
+
+**Why:** work product created within the scope of employment is, under standard employment agreements, the employer's IP, even when written entirely by Ryan — that covers the specific code/data/designs, not his general skill and knowledge, which he's free to reuse. This is not a legal opinion (Ryan should consult an actual employment lawyer for certainty on the exact boundary) — it's the conservative, safe default given the real stakes if it's gotten wrong. See [`PROJECT_CONTEXT.md § IP boundary`](PROJECT_CONTEXT.md).
+
+## Module 2: vehicle/asset issue & status tracking, not GPS/telematics route optimization
+
+**Date:** 2026-07-19
+
+**Context:** Ryan described two logistics capabilities he's strong at: (1) issue reporting/routing/status-tracking for vehicles, similar to a bot he'd previously built (conceptually, not the code), and (2) real-time GPS/telematics integration for route and load-pricing optimization, contingent on a client already having tracking hardware.
+
+**Decision:** Build vehicle/asset issue & status tracking as module 2. Defer GPS/telematics route optimization.
+
+**Why:** issue/status tracking needs no client hardware dependency, reuses most of module 1's existing code (same platform pattern), and directly targets the highest-quantified pain point found in research (downtime and ghost-asset costs) — see [`research/MARKET_RESEARCH.md § Logistics/Fleet Niche`](research/MARKET_RESEARCH.md#logisticsfleet-niche). GPS/telematics integration is real and valuable but adds third-party API dependency and client-hardware contingency that would slow the build without being necessary to prove the platform pattern.
+
 ## Promoted from the incubator over five other candidates, via direct interview
 
 **Date:** 2026-07-18

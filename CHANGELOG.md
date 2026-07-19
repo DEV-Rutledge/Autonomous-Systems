@@ -14,6 +14,14 @@ related:
 
 Chronological record of what shipped, in order. For *why* something changed, see [DECISIONS.md](DECISIONS.md); for what's true right now, see [CURRENT_STATE.md](CURRENT_STATE.md).
 
+## 0.11 — Automation Studio Restructured as Modular Logistics Platform (2026-07-19)
+
+- Corrected the venture's core framing after Ryan clarified "niche" meant client type, not product type — restructured from "onboarding is the product" to a modular Teams-embedded orchestration platform, with onboarding as module 1 of several, not the whole pitch
+- Named logistics/fleet as the primary niche (restaurant, software-development as real but unbuilt future niches), backed by quantified research: fleet downtime $448–1,200+/day/vehicle, ghost assets draining $150–300/day or $8,000–15,000/month per idle truck, 15–25% of mid-large fleet assets under 50% utilization
+- Positioned the platform for logistics *back-office* teams specifically, not drivers in vehicles — a real safety finding (Teams isn't suited for in-vehicle communication), not just a market segmentation choice
+- Designed module 2 (vehicle/asset issue & status tracking) from Ryan's own description of general concepts — explicitly not derived from his employer-owned fleet-rental codebase, which Claude Code will not reference; logged as a standing IP boundary in `PROJECT_CONTEXT.md`
+- Documented the reusable Platform Pattern underlying both modules in `architecture/TECHNICAL_ARCHITECTURE.md`
+
 ## 0.10 — Automation Studio MVP Scaffold Built (2026-07-18)
 
 - Added `src/` to the repo-wide venture folder anatomy — `api/`/`automation/` hold specs, nothing existed for real runnable code

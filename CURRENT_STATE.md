@@ -3,7 +3,7 @@ title: ABOS Current State
 version: 0.1.0
 status: active
 author: Ryan Rutledge
-last_updated: 2026-07-18
+last_updated: 2026-07-19
 related:
   - README.md
   - Roadmap.md
@@ -12,31 +12,31 @@ related:
 
 # Current State
 
-Living status doc — update this at the end of any session that changes repo structure, ships a flagship document, or shifts direction. This is the fastest way for Ryan, Claude Code, or ChatGPT to get oriented at the start of a new session without reconstructing context from commit history.
+Living status doc — update this at the end of any session that changes repo structure, ships a flagship document, or shifts direction. This is the fastest way to get oriented at the start of a new session without reconstructing context from commit history.
 
 ## Repo Version
 
-**0.10** (Automation Studio MVP Scaffold Built) — see [README.md § Versioning](README.md#versioning) for the full milestone table, [CHANGELOG.md](CHANGELOG.md) for what shipped in order, and [DECISIONS.md](DECISIONS.md) for why each one happened.
+**0.11** (Automation Studio Restructured as Modular Logistics Platform) — see [README.md § Versioning](README.md#versioning) for the full milestone table, [CHANGELOG.md](CHANGELOG.md) for what shipped in order, and [DECISIONS.md](DECISIONS.md) for why each one happened.
 
 ## Priority Venture
 
-**`ventures/02-automation-studio/`** — promoted 2026-07-18 for fastest realistic path to closing the income gap given real financial urgency. Treat this as the venture to unblock first when work is ambiguous, unless Ryan says otherwise. Custom new-hire onboarding/provisioning agent embedded in Microsoft Teams, backed by Airtable ($4,000–7,000/hire overhead, quantified). Build: hand-rolled Teams AI Library + Azure Functions. Engagement model: build-and-train or premium retainer, not commodity maintenance. **MVP scaffold now exists** — schema, seed data, architecture doc, dashboard spec, and real starter code (Airtable client, Graph client, orchestrator function, Teams bot skeleton, seed script) — see `ventures/02-automation-studio/src/README.md § What's Real vs. Stubbed` before assuming anything runs live.
+**`ventures/02-automation-studio/`** — promoted 2026-07-18 for fastest realistic path to closing the income gap given real financial urgency. **Reframed 2026-07-19:** not a single onboarding product — a modular Teams-embedded orchestration platform for logistics/fleet companies' back-office teams (dispatchers, fleet managers, ops, HR, accounting — not drivers in vehicles, a real safety distinction). Two modules: onboarding (MVP scaffold built) and vehicle/asset issue & status tracking (designed, not coded). Restaurant and software-development are named future niches, not built. **Important:** Ryan has prior fleet-rental work that is his employer's IP — nothing in this venture uses or references that codebase; see `ventures/02-automation-studio/PROJECT_CONTEXT.md § IP boundary` before proposing anything that touches his prior fleet work.
 
 ## What's Built
 
 - **Root docs:** README, Roadmap, Architecture, DevelopmentStandards, TechStack, DECISIONS, CURRENT_STATE, CHANGELOG, LESSONS_LEARNED — all live and cross-linked.
 - **`ventures/00-incubator/`:** the 15-stage validation pipeline, its four working documents, and `Ideas/` — 5 research-backed candidates, one (`automation-reselling`) now scored and promoted; the other 4 remain unscored, available for later.
 - **`ventures/01-lead-engine/`:** still in incubator Phase A (pre-build), active but not currently the priority.
-- **`ventures/02-automation-studio/`:** priority venture. Full docs (`research/MARKET_RESEARCH.md`, `architecture/TECHNICAL_ARCHITECTURE.md`, `database/AIRTABLE_SCHEMA.md`, `docs/DashboardSpec.md`) plus real starter code in `src/` — not yet run against live Azure/Airtable/Teams credentials, not yet validated against real discovery calls. Dashboard itself not yet built (spec only).
+- **`ventures/02-automation-studio/`:** priority venture, modular platform. Module 1 (onboarding) has a full MVP scaffold (schema, seed data, real starter code in `src/`) — not yet run against live credentials. Module 2 (vehicle/asset issue tracking) has architecture + concept design but no code yet, no schema file yet. Dashboard spec exists, dashboard itself not built.
 
 ## What's Next
 
-1. Get real credentials set up (Ryan's own Azure/Microsoft account, separate from his employer — his task, not Claude Code's) and actually run the seed script + orchestrator function against a live Airtable base.
-2. Wire up the stubbed pieces flagged in `src/README.md § What's Real vs. Stubbed` (Graph API calls, live Adaptive Card posting) as needed for a real demo.
-3. Build the ROI dashboard per `docs/DashboardSpec.md`.
-4. Record a demo walkthrough — doubles as outreach material.
-5. Validate the $4,000–7,000/hire pain point and target company size against real conversations, not just secondary research.
-6. Start outreach: warm network first, then LinkedIn targeting companies with visible hiring activity.
+1. Write `database/AIRTABLE_SCHEMA.md` additions (or a new file) for module 2's Vehicles/Assets, Issue Reports, and Status History tables.
+2. Build module 2's code, reusing module 1's Airtable client / notification patterns per the Platform Pattern.
+3. Get real credentials set up (Ryan's own Azure/Microsoft account, separate from his employer) and run both modules against a live Airtable base.
+4. Build the ROI dashboard, extended to cover both the onboarding pipeline and the fleet board view.
+5. Validate pain points and target fleet size against real conversations, not just secondary research.
+6. Start outreach: warm network first (including any contacts from Ryan's recent logistics-team work), then targeted channels.
 7. Lead Engine and the other 4 unscored incubator ideas remain available — revisit once Automation Studio has real traction or hits a wall.
 
 ## How Work Happens Here

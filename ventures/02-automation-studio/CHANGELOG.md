@@ -1,15 +1,24 @@
 ---
 title: Automation Studio — Changelog
-version: 0.1.0
+version: 0.2.0
 status: draft
 author: Ryan Rutledge
-last_updated: 2026-07-18
+last_updated: 2026-07-19
 related:
   - README.md
   - DECISIONS.md
 ---
 
 # Changelog
+
+## 2026-07-19
+
+- **Corrected the core framing:** niche means client type (logistics/fleet), not product type — restructured from "onboarding is the product" to a modular Teams-embedded orchestration platform. Onboarding is module 1, not the whole pitch. See `DECISIONS.md`.
+- Named logistics/fleet as the primary niche (restaurant, software-development as future niches, not built yet), backed by real research: fleet downtime costs $448–1,200+/day/vehicle, "ghost assets" drain $150–300/day or $8,000–15,000/month per idle truck, 15–25% of fleet assets in mid-large fleets run below 50% utilization.
+- Positioned as an orchestration layer for logistics *back-office* teams (dispatchers, fleet managers, ops, accounting) — not drivers in vehicles, a real safety consideration surfaced in research, not just a market segmentation choice.
+- Designed module 2: **vehicle/asset issue & status tracking** — driver reports an issue via a structured Teams form (used when stopped), routed to the maintenance/logistics team, tracked through resolution stages, visualized on a fleet-board-style dashboard. Not yet coded.
+- Documented the reusable **Platform Pattern** underlying every module (entity + status state machine + Teams/webhook trigger + Airtable persistence + notification + dashboard + quantified outcome metric) in `architecture/TECHNICAL_ARCHITECTURE.md`.
+- Logged the IP boundary explicitly: Ryan's prior fleet-rental work belongs to his employer; nothing in this venture references that codebase or data — module 2 is an independent design from his own description of general concepts.
 
 ## 2026-07-18
 

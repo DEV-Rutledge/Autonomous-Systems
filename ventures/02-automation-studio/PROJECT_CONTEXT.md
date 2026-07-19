@@ -1,43 +1,51 @@
 ---
 title: Automation Studio — Project Context
-version: 0.4.0
+version: 0.5.0
 status: draft
 author: Ryan Rutledge
-last_updated: 2026-07-18
+last_updated: 2026-07-19
 related:
   - README.md
   - CLAUDE.md
   - GPT.md
   - DECISIONS.md
   - research/MARKET_RESEARCH.md
+  - architecture/TECHNICAL_ARCHITECTURE.md
 ---
 
 # Project Context
 
-**What this is (sharpened 2026-07-18, twice):** a custom-built new-hire onboarding and provisioning agent embedded in Microsoft Teams — automates the ~30–45 minutes and 18+ manual steps IT normally does per hire (Teams/channel assignment, room/resource access, tenant setup), backed by Airtable as the data layer. Not a notification integration; a conversational agent that takes real actions. Full detail in [`research/MARKET_RESEARCH.md`](research/MARKET_RESEARCH.md).
+**What this is (restructured 2026-07-19 — read this version, not the single-product framing in earlier commits):** a modular Teams-embedded orchestration platform, not a single-purpose onboarding bot. Every module follows the same underlying pattern — an entity with a status state machine, triggered from Teams, backed by Airtable, routed to the right person/team, visualized on a dashboard — see [`architecture/TECHNICAL_ARCHITECTURE.md § Platform Pattern`](architecture/TECHNICAL_ARCHITECTURE.md#platform-pattern). Onboarding was the first module; it's one capability among several, not the whole pitch.
 
-**Primary objective:** fastest realistic path from ~$4,000/mo to ~$10,000/mo combined income. This venture was chosen over the other five incubator candidates specifically because it scored highest on documented time-to-first-dollar — see [`ventures/00-incubator/Ideas/automation-reselling/Scorecard.md`](../00-incubator/Ideas/automation-reselling/Scorecard.md).
+**Niche strategy:** a *client-type* niche, not a *product* niche — this was a real correction from Ryan (2026-07-19) after the first pass narrowed too far into "onboarding for any SMB." The platform serves a curated set of specific industries, each with tailored modules, rather than either (a) one narrow product sold everywhere or (b) trying to serve everyone. **Primary niche: logistics / fleet & rental asset management** — Ryan's strongest real-world background, most concrete pain points, and (per his own read) the best revenue potential despite real competition. Restaurant and software-development are noted future niches, not built now — see [`DECISIONS.md`](DECISIONS.md) for why sequencing one niche first still matters given time constraints.
+
+**Primary objective:** fastest realistic path from ~$4,000/mo to ~$10,000/mo combined income — unchanged. Every module choice should still be evaluated against time-to-first-dollar, not just architectural elegance.
 
 **Real constraints that should shape every recommendation made here:**
 - **Time:** 10–20 hrs/week total (2 hrs on weeknights, ~10 hrs on weekends). Don't propose anything that assumes daytime availability or open-ended time investment.
-- **Financial urgency is real, not abstract.** Ryan's family is under real financial pressure. When choosing between a faster/scrappier path and a more polished/slower one, default to faster unless there's a clear reason not to.
-- **Client interaction is fine, async-preferred.** Evening calls work; Loom/email/forms for scoping are preferred over requiring live daytime meetings.
-- **Separate business finances from day job.** Ryan is setting up a dedicated Microsoft/Azure account and card on his personal email for this venture, kept apart from his employer's accounts. Claude Code does not handle any part of this (account setup, payments, credentials) — informational guidance only if asked.
+- **Financial urgency is real, not abstract.** Ryan's family is under real financial pressure. Default to faster/scrappier unless there's a clear reason not to.
+- **Client interaction is fine, async-preferred.** Evening calls work; Loom/email/forms for scoping preferred over live daytime meetings.
+- **Separate business finances from day job.** Ryan is setting up a dedicated Microsoft/Azure account and card on his personal email, kept apart from his employer's accounts. Claude Code does not handle any part of this.
+- **IP boundary — read this before referencing any of Ryan's prior work:** Ryan previously built an autonomous fleet-rental system as an employee, and that codebase/data is his employer's property. He will describe *concepts and requirements* in his own words; he will not (and should not be asked to) share or paraphrase the actual proprietary code, data, or specific designs. Everything built in this venture is an independent, original implementation informed by his general skill and knowledge — not a derivative of his employer's system. If any request in this venture would require referencing that codebase, stop and flag it rather than proceeding.
 
-**Founder's actual technical background (use this, don't route around it):** very strong at building Microsoft Teams bots on Azure Functions integrated with Airtable — listens for keywords/@mentions, acts on linked data. Comfortable expanding to other backends/databases and tailoring automation + responses per niche. Plans to use Claude Code specifically for dashboards/web portals that act as a frontend onto the bot/data layer — this venture's build isn't Teams-bot-only, it includes a web frontend component.
+**Founder's actual technical background:**
+- Strong at building Microsoft Teams bots on Azure Functions integrated with Airtable — listens for keywords/@mentions, acts on linked data.
+- Real (recent — a few months, described honestly, not oversold) hands-on experience with logistics teams: rental scheduling, utilization tracking, vehicle/asset issue reporting and routing, GPS/telematics integration when hardware is available, and load/route pricing optimization.
+- Genuinely good at translating technical complexity into UI/UX non-technical users (dispatchers, asset managers, ops staff) can actually use — a real differentiator worth naming explicitly in positioning, not just an assumed baseline skill.
+- Plans to use Claude Code for dashboards/web portals as the frontend layer on top of the bot/data layer.
 
-**Build decision (2026-07-18):** hand-rolled on Teams AI Library + Azure Functions, not Microsoft Copilot Studio — matches existing skill directly, full control over the agent layer. See [`DECISIONS.md`](DECISIONS.md).
+**Build decision:** hand-rolled on Teams AI Library + Azure Functions, not Microsoft Copilot Studio. See [`DECISIONS.md`](DECISIONS.md).
 
-**Engagement model (2026-07-18, Ryan's explicit preference):** avoid low-value ongoing maintenance-only work. Two acceptable structures:
-1. Build the system + train the client's tech team to run/extend it — one-time project fee, no retainer
-2. Stay involved only at a high, expertise-reflecting retainer rate — not a commodity $500/mo maintenance fee
+**Engagement model (Ryan's explicit preference):** avoid low-value ongoing maintenance-only work.
+1. Build the system + train the client's tech team — one-time project fee, no retainer, OR
+2. Stay involved only at a high, expertise-reflecting retainer rate — not commodity $500/mo maintenance.
 
-If client load grows to the point of being stretched thin across multiple engagements, Ryan is open to hiring — not an immediate plan, but a known next step, not a constraint to avoid mentioning.
+Open to hiring later if stretched thin across multiple engagements — not an immediate plan, a known next step.
 
-**Why this beats generic automation reselling or plain integrations (research-backed):** custom AI-powered chatbots with real NLP price at $75,000–150,000 for agency builds — a different value tier than generic Make.com/n8n retainers ($500–3,000/mo) or plain Airtable-Teams notification integrations (free-to-cheap via Zapier/Make/n8n — a race to the bottom to avoid). The wedge is the agent layer that takes action, not the connector.
+**Positioning within logistics/fleet (research-backed, 2026-07-19):** not a telematics/GPS hardware competitor to Samsara/Motive/Fleetio — an orchestration layer that sits on top of whatever asset/tracking data a company already has (Fleetio, Samsara, Airtable, or a spreadsheet) and turns it into in-chat action for the *back-office* team (dispatchers, fleet managers, ops coordinators) — not drivers in vehicles, which is a real safety consideration, not just a market segment choice. See [`research/MARKET_RESEARCH.md § Logistics/Fleet Niche`](research/MARKET_RESEARCH.md#logisticsfleet-niche).
 
-**Current stage:** MVP scaffold built (2026-07-18) — Airtable schema, seed data, technical architecture, dashboard spec, and starter Azure Function/Teams bot code all exist. Not yet run against live credentials, and not yet validated against real conversations. See [`src/README.md § What's Real vs. Stubbed`](src/README.md#whats-real-vs-stubbed) for exactly what works today vs. what's a placeholder.
+**Current stage:** Module 1 (Onboarding) has a full MVP scaffold — see [`src/README.md § What's Real vs. Stubbed`](src/README.md#whats-real-vs-stubbed). Module 2 (Vehicle/Asset Issue & Status Tracking) is designed (schema + architecture) but not yet coded — see [`architecture/TECHNICAL_ARCHITECTURE.md § Module 2`](architecture/TECHNICAL_ARCHITECTURE.md#module-2-vehicleasset-issue--status-tracking). Neither module has been run against live credentials or validated against real conversations.
 
-**Tech stack:** Azure Functions + Teams AI Library as the core agent layer; Airtable as the first backend; Claude Code for any dashboard/web-portal frontend work; ChatGPT/Claude APIs for the LLM reasoning layer.
+**Tech stack:** Azure Functions + Teams AI Library as the core agent layer; Airtable as the first backend; Claude Code for dashboard/web-portal frontend work; ChatGPT/Claude APIs for the LLM reasoning layer.
 
 **Folder layout:** follows [Architecture.md § Venture Folder Anatomy](../../Architecture.md#venture-folder-anatomy).
