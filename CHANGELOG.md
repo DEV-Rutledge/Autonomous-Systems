@@ -14,6 +14,14 @@ related:
 
 Chronological record of what shipped, in order. For *why* something changed, see [DECISIONS.md](DECISIONS.md); for what's true right now, see [CURRENT_STATE.md](CURRENT_STATE.md).
 
+## 0.9 — Automation Studio Niche Narrowed to Onboarding (2026-07-18)
+
+- Narrowed `ventures/02-automation-studio` from a general Teams-agent-on-Airtable pitch to a specific niche: new-hire onboarding/provisioning automation, after Ryan's stated capabilities (room assignment, employee batching to tenant, org onboarding) pointed there more directly than the marketing-agency framing
+- Quantified the pain point ($4,000–7,000/hire in manual overhead, 30–45 min / 18+ manual actions per hire) and mapped the competitive gap against Rippling, BambooHR, Zluri, and Entra ID Governance — none directly compete with a lightweight Teams-native conversational agent
+- Locked the build decision: hand-rolled on Teams AI Library + Azure Functions, not Copilot Studio
+- Set the engagement model per Ryan's explicit preference: build-and-train or premium retainer, not commodity maintenance work
+- Defined a concrete MVP: a demo new-hire onboarding agent built with sample data, no client required to start
+
 ## 0.8 — Automation Studio Positioning Sharpened; ChatGPT Excluded (2026-07-18)
 
 - Sharpened `ventures/02-automation-studio` from generic Microsoft 365/Teams/Azure automation to a specific product: custom AI agents embedded in Teams acting on real business data (Airtable-first), after research showed plain integrations are commoditized (free via Zapier/Make/n8n) but AI-agent builds price at $75K–150K agency-tier

@@ -1,6 +1,6 @@
 ---
 title: Automation Studio
-version: 0.2.0
+version: 0.3.0
 status: draft
 author: Ryan Rutledge
 last_updated: 2026-07-18
@@ -11,7 +11,7 @@ related:
 
 # Automation Studio
 
-Custom AI agents embedded in Microsoft Teams that read and act on real business data — starting with Airtable, generalizing to other backends. Not a notification integration (those are commoditized); a conversational agent that takes real actions. Promoted from the incubator on 2026-07-18, sharpened the same day once Ryan's actual strongest skill (Teams bots on Azure Functions + Airtable) came into focus — see [`PROJECT_CONTEXT.md`](PROJECT_CONTEXT.md).
+A custom-built new-hire onboarding and provisioning agent embedded in Microsoft Teams — automates the ~30–45 minutes and 18+ manual steps IT normally spends per hire, backed by Airtable. Not a notification integration (those are commoditized); a conversational agent that takes real actions. Promoted from the incubator on 2026-07-18, sharpened twice the same day as Ryan's actual strongest skills (Teams bots on Azure Functions + Airtable, room/tenant/onboarding automation) came into focus — see [`PROJECT_CONTEXT.md`](PROJECT_CONTEXT.md).
 
 **Start here:**
 

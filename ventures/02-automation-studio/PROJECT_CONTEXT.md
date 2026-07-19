@@ -1,6 +1,6 @@
 ---
 title: Automation Studio — Project Context
-version: 0.2.0
+version: 0.3.0
 status: draft
 author: Ryan Rutledge
 last_updated: 2026-07-18
@@ -14,23 +14,30 @@ related:
 
 # Project Context
 
-**What this is (sharpened 2026-07-18):** custom AI agents embedded in Microsoft Teams that read and act on a business's real data — not notification-style integrations (those are fully commoditized by Zapier/Make/n8n/Airtable's own native automations), but conversational agents that take real actions via natural language and @mentions. Airtable is the proven starting backend (Ryan's strongest current skill); the offering generalizes to SharePoint Lists, Dataverse, SQL, and other backends as it grows. Full detail in [`research/MARKET_RESEARCH.md`](research/MARKET_RESEARCH.md).
+**What this is (sharpened 2026-07-18, twice):** a custom-built new-hire onboarding and provisioning agent embedded in Microsoft Teams — automates the ~30–45 minutes and 18+ manual steps IT normally does per hire (Teams/channel assignment, room/resource access, tenant setup), backed by Airtable as the data layer. Not a notification integration; a conversational agent that takes real actions. Full detail in [`research/MARKET_RESEARCH.md`](research/MARKET_RESEARCH.md).
 
 **Primary objective:** fastest realistic path from ~$4,000/mo to ~$10,000/mo combined income. This venture was chosen over the other five incubator candidates specifically because it scored highest on documented time-to-first-dollar — see [`ventures/00-incubator/Ideas/automation-reselling/Scorecard.md`](../00-incubator/Ideas/automation-reselling/Scorecard.md).
 
 **Real constraints that should shape every recommendation made here:**
 - **Time:** 10–20 hrs/week total (2 hrs on weeknights, ~10 hrs on weekends). Don't propose anything that assumes daytime availability or open-ended time investment.
-- **Financial urgency is real, not abstract.** Ryan's family is under real financial pressure. When choosing between a faster/scrappier path and a more polished/slower one, default to faster unless there's a clear reason not to — this isn't a hobby project with unlimited runway.
+- **Financial urgency is real, not abstract.** Ryan's family is under real financial pressure. When choosing between a faster/scrappier path and a more polished/slower one, default to faster unless there's a clear reason not to.
 - **Client interaction is fine, async-preferred.** Evening calls work; Loom/email/forms for scoping are preferred over requiring live daytime meetings.
+- **Separate business finances from day job.** Ryan is setting up a dedicated Microsoft/Azure account and card on his personal email for this venture, kept apart from his employer's accounts. Claude Code does not handle any part of this (account setup, payments, credentials) — informational guidance only if asked.
 
-**Founder's actual technical background (use this, don't route around it):** very strong at building Microsoft Teams bots on Azure Functions integrated with Airtable — listens for keywords/@mentions, acts on linked data. Comfortable expanding to other backends/databases and tailoring automation + responses per niche. This is real event-driven backend/orchestration experience, not no-code workflow assembly, and it's the actual product, not just internal tooling.
+**Founder's actual technical background (use this, don't route around it):** very strong at building Microsoft Teams bots on Azure Functions integrated with Airtable — listens for keywords/@mentions, acts on linked data. Comfortable expanding to other backends/databases and tailoring automation + responses per niche. Plans to use Claude Code specifically for dashboards/web portals that act as a frontend onto the bot/data layer — this venture's build isn't Teams-bot-only, it includes a web frontend component.
 
-**Why this beats generic automation reselling (research-backed, 2026-07-18):** custom AI-powered chatbots with real NLP price at $75,000–150,000 for agency builds — a completely different value tier than generic Make.com/n8n workflow retainers ($500–3,000/mo). Businesses are already paying real money for Teams+AI capability (Copilot Studio alone runs $1,000/mo for 2,000 sessions) before any custom build. Plain Airtable-Teams notification integrations, by contrast, are a race to the bottom — free-to-cheap via Zapier/Make/n8n. The wedge is the agent layer, not the connector.
+**Build decision (2026-07-18):** hand-rolled on Teams AI Library + Azure Functions, not Microsoft Copilot Studio — matches existing skill directly, full control over the agent layer. See [`DECISIONS.md`](DECISIONS.md).
 
-**Strategic sequencing:** this *is* now the AI-agent work, brought forward rather than sequenced as a later premium tier — the market data justified leading with it. Generic Make.com/n8n automation work (the original incubator idea) becomes the fallback/broader offering if the Teams-agent niche doesn't convert fast enough, not the other way around.
+**Engagement model (2026-07-18, Ryan's explicit preference):** avoid low-value ongoing maintenance-only work. Two acceptable structures:
+1. Build the system + train the client's tech team to run/extend it — one-time project fee, no retainer
+2. Stay involved only at a high, expertise-reflecting retainer rate — not a commodity $500/mo maintenance fee
 
-**Current stage:** niche sharpened via research (2026-07-18), not yet validated against real conversations. `research/MARKET_RESEARCH.md` needs a real target-industry decision (marketing/creative agencies, real estate, or nonprofits — Airtable's heaviest-use segments) before outreach starts.
+If client load grows to the point of being stretched thin across multiple engagements, Ryan is open to hiring — not an immediate plan, but a known next step, not a constraint to avoid mentioning.
 
-**Tech stack:** Azure Functions + Teams AI Library / Bot Framework as the core; Airtable as the first backend, architected to generalize; Microsoft Copilot Studio worth evaluating as a faster-to-market alternative/complement to hand-rolled agents (Microsoft's own low-code multi-agent platform, built on Semantic Kernel) — see [`research/MARKET_RESEARCH.md § Microsoft's Native Agent Tooling`](research/MARKET_RESEARCH.md#microsofts-native-agent-tooling). ChatGPT/Claude APIs where the reasoning layer needs more flexibility than Copilot Studio's low-code approach allows.
+**Why this beats generic automation reselling or plain integrations (research-backed):** custom AI-powered chatbots with real NLP price at $75,000–150,000 for agency builds — a different value tier than generic Make.com/n8n retainers ($500–3,000/mo) or plain Airtable-Teams notification integrations (free-to-cheap via Zapier/Make/n8n — a race to the bottom to avoid). The wedge is the agent layer that takes action, not the connector.
+
+**Current stage:** niche narrowed to new-hire onboarding/provisioning (2026-07-18) — see [`research/MARKET_RESEARCH.md § Primary Niche`](research/MARKET_RESEARCH.md#primary-niche-new-hire-onboarding--provisioning-agent). Not yet validated against real conversations. Next concrete step is a demo-quality MVP built with sample data — see [`research/MARKET_RESEARCH.md § MVP / Portfolio Piece`](research/MARKET_RESEARCH.md#mvp--portfolio-piece).
+
+**Tech stack:** Azure Functions + Teams AI Library as the core agent layer; Airtable as the first backend; Claude Code for any dashboard/web-portal frontend work; ChatGPT/Claude APIs for the LLM reasoning layer.
 
 **Folder layout:** follows [Architecture.md § Venture Folder Anatomy](../../Architecture.md#venture-folder-anatomy).

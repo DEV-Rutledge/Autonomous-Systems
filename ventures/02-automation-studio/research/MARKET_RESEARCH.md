@@ -1,6 +1,6 @@
 ---
 title: Automation Studio — Market Research
-version: 0.2.0
+version: 0.3.0
 status: draft
 author: Ryan Rutledge
 last_updated: 2026-07-18
@@ -12,109 +12,134 @@ related:
 
 # Market Research
 
-> **Status note:** first draft, sharpened once (2026-07-18) after Ryan clarified his strongest actual skill (Teams bots on Azure Functions integrated with Airtable) and interest in going deeper on agents. Not yet rebuilt to the full gold-standard flagship format described in [Architecture.md § Document Dependency Chain](../../../Architecture.md#document-dependency-chain), and not yet validated against real discovery calls.
+> **Status note:** first draft, sharpened twice (2026-07-18). First pass narrowed to "Teams AI agents on business data, Airtable-first." Second pass narrowed further to a specific niche — new-hire onboarding/provisioning — once Ryan's actual capability list (room assignment, employee batching to tenant, org onboarding) made clear this fits better than the initial marketing-agency framing. Not yet rebuilt to the full gold-standard flagship format described in [Architecture.md § Document Dependency Chain](../../../Architecture.md#document-dependency-chain), and not yet validated against real discovery calls.
 
 ## Table of Contents
 
 - [Summary](#summary)
 - [The Commoditization Trap — Read This First](#the-commoditization-trap--read-this-first)
+- [Primary Niche: New-Hire Onboarding & Provisioning Agent](#primary-niche-new-hire-onboarding--provisioning-agent)
+- [Competitive Landscape for the Onboarding Niche](#competitive-landscape-for-the-onboarding-niche)
+- [Engagement Model & Pricing](#engagement-model--pricing)
+- [Adjacent/Later Opportunity: Tenant Migration & M&A](#adjacentlater-opportunity-tenant-migration--ma)
+- [Deprioritized: Marketing-Agency Airtable Niche](#deprioritized-marketing-agency-airtable-niche)
 - [Microsoft's Native Agent Tooling](#microsofts-native-agent-tooling)
-- [Pricing Evidence](#pricing-evidence)
-- [Target Customer](#target-customer)
-- [Revenue Evidence](#revenue-evidence)
+- [MVP / Portfolio Piece](#mvp--portfolio-piece)
 - [Risks](#risks)
 - [Open Questions](#open-questions)
 - [Sources](#sources)
 
 ## Summary
 
-Custom AI agents embedded in Microsoft Teams that read and act on real business data — starting with Airtable (Ryan's proven strength), generalizing to other backends. Not a notification integration; a conversational agent that takes real actions via natural language and @mentions, priced as a premium capability rather than a commodity workflow connector.
+Custom AI agents embedded in Microsoft Teams that read and act on real business data — not a notification integration, a conversational agent that takes real actions. Primary wedge: **new-hire onboarding and provisioning automation** for growing companies, using Airtable as the data layer (Ryan's proven strength) behind a Teams-native conversational front end.
 
 ## The Commoditization Trap — Read This First
 
-**"Airtable + Teams integration" as a search term returns almost entirely commodity, mostly-free tooling**: Zapier, Make, n8n, Albato, and Airtable's own native "Send MS Teams message" automation action all already do basic record-change-to-Teams-notification flows, in some cases in under 5 minutes with no code ([source](https://albato.com/connect/airtable-with-microsoft_teams)). If the pitch is "I'll connect your Airtable to Teams," that's competing with a free built-in feature.
+**"Airtable + Teams integration" as a search term returns almost entirely commodity, mostly-free tooling**: Zapier, Make, n8n, Albato, and Airtable's own native "Send MS Teams message" automation action all already do basic record-change-to-Teams-notification flows, in some cases in under 5 minutes with no code ([source](https://albato.com/connect/airtable-with-microsoft_teams)). If the pitch is "I'll connect your Airtable to Teams," that's competing with a free built-in feature. The actual product is the agent layer that takes real action, not the connector — true regardless of which specific niche this gets applied to.
 
-**The actual product is the agent layer, not the connector.** What Ryan has built — a bot that listens for keywords/@mentions and takes real actions against linked data — is categorically different from a one-way notification. This distinction needs to be explicit in every piece of positioning/marketing material; conflating the two undersells the offering into a market that's already been won by free tools.
+## Primary Niche: New-Hire Onboarding & Provisioning Agent
+
+**This is the "yes please help us" pain point, quantified:**
+
+- Manual Microsoft 365 onboarding takes **30–45 minutes per user** and requires admins to switch across multiple separate portals, with **18+ manual actions per user** ([source](https://blog.admindroid.com/microsoft-365-user-onboarding-workflow-for-easy-user-provisioning/))
+- Manual onboarding processes can cost **$4,000–7,000 per employee** once HR/IT time is fully accounted for, with 20–30% of that time spent waiting on backend processing or repeating steps ([source](https://www.beyondintranet.com/blog/hidden-cost-of-manual-onboarding-microsoft-365/))
+- Automated onboarding workflows (via Power Automate/Entra ID Lifecycle Workflows) can reduce admin time by up to 70%, per vendor-reported figures — directionally credible given how manual the baseline process is, though vendor numbers should be treated as an upper bound the same way chatbot-deflection vendor numbers were in the earlier incubator research ([source](https://learn.microsoft.com/en-us/power-platform/guidance/case-studies/streamline-employee-onboarding))
+- Different admins following different manual processes creates real configuration inconsistency and compliance risk, not just wasted time ([source](https://easyentra.com/the-complete-guide-to-m365-user-onboarding/))
+
+**Why this is the right first niche, specifically:**
+- It's *recurring*, not episodic — every single hire re-triggers the pain, unlike a one-time migration project
+- It has a **quantified dollar figure** to open a pitch with ($4,000–7,000/hire in overhead) — concrete, scary, and easy to contrast against a project fee
+- It maps directly onto skills Ryan already has and described: room/resource assignment, batching employees into the right tenant structure, getting people set up in Teams
+- Companies actively hiring are identifiable *right now* via public job-posting activity — a real, targetable acquisition signal, not a cold guess
+
+## Competitive Landscape for the Onboarding Niche
+
+The players here don't actually compete with a bespoke Teams-native agent — they compete for a different sale entirely:
+
+| Player | Model | Pricing | Why It's Not a Direct Competitor |
+|---|---|---|---|
+| Rippling | Full HR+IT+Finance platform, HR-system-driven provisioning | $35/mo base + $8+/employee/mo | Requires adopting Rippling as the system of record — a rip-and-replace decision, not an add-on |
+| BambooHR | SMB-focused HRIS with identity lifecycle integrations | $10–17/employee/mo | Same rip-and-replace dynamic; full HRIS, not an embedded agent |
+| Zluri | SaaS/identity governance, non-SCIM app provisioning | Enterprise-focused | Backend identity governance tooling, no conversational/Teams-native front end |
+| Microsoft Entra ID Governance | Native directory-driven lifecycle workflows | Included in some M365/Entra tiers | Powerful but configuration-heavy, no natural-language interface, still requires an admin who knows the tooling |
+
+**The gap:** none of these are a lightweight, Teams-embedded conversational agent that a growing company can adopt *without* replacing their existing HR/data tools. A company using Airtable (or a spreadsheet) to track new hires, too small to justify Rippling's per-employee pricing structure or a full Entra ID Governance rollout, but still bleeding 30–45 minutes and real dollars per hire, is underserved by all four of the above.
+
+## Engagement Model & Pricing
+
+**Ryan's stated preference (2026-07-18):** avoid low-value ongoing maintenance work. Two acceptable models:
+1. **Build + train** — build the system, train the client's existing tech team to run/extend it, one-time (higher) project fee, no ongoing retainer
+2. **Premium retainer** — if staying involved, charge a high rate that reflects real expertise, not a commodity $500/mo maintenance fee
+
+This changes the pricing framing from the earlier generic-automation research (which assumed $500–3,000/mo retainers as the default model). Given the onboarding niche's quantified pain ($4,000–7,000/hire in overhead), a project fee anchored to *avoided cost* rather than build hours is defensible — e.g., a company hiring 20 people/year losing $4,000+/hire to manual overhead has an $80,000+/year problem; a $10,000–25,000 build-and-train engagement is an easy yes against that math, and doesn't require an ongoing retainer to be worth it to either party.
+
+**Not yet validated against real willingness-to-pay** — this is a pricing hypothesis derived from the avoided-cost math above, not a tested number.
+
+## Adjacent/Later Opportunity: Tenant Migration & M&A
+
+Also a real, well-documented pain point — but not the first wedge:
+
+- Tenant-to-tenant migrations during M&A involve identity conflicts, broken Teams/SharePoint permissions, and legal-hold complexity that can block mailbox migration entirely ([source](https://www.coreview.com/blog/microsoft-365-tenant-to-tenant-migration-a-comprehensive-guide-for-it-leaders))
+- Enterprise migrations (5,000+ users) take 4–9 months; IT integration is often budgeted at only 2% of total M&A integration cost despite being critical to merger success ([source](https://www.epcgroup.net/microsoft-365-tenant-migration-m-and-a-playbook-2026))
+- This space already has established, larger consultancies (the "playbook" guides found in research read like enterprise-consulting marketing, not solo-operator territory)
+
+**Why it's second, not first:** episodic (only fires during an active M&A event, a much narrower sales trigger than "every company that's hiring"), and the compliance/legal-hold complexity likely requires expertise beyond bot-building alone. Worth revisiting once the onboarding niche has produced case studies and real client relationships — those clients may themselves go through M&A later and become a natural upsell.
+
+## Deprioritized: Marketing-Agency Airtable Niche
+
+Preserved from the first sharpening pass, not deleted — still a viable fallback if the onboarding niche doesn't convert:
+
+Marketing/advertising agencies are Airtable's single largest user segment (10% of reviewers from small companies), with real estate, nonprofits, and general ops/PM teams also heavy users ([source](https://bloomberry.com/data/airtable/)). The gap identified then still holds — a Teams-embedded agent for querying/acting on Airtable content-calendar data — but it doesn't map as directly onto Ryan's demonstrated skills (room assignment, tenant batching, org onboarding) as the onboarding niche does, and lacks as sharp a quantified pain point.
 
 ## Microsoft's Native Agent Tooling
 
-Directly relevant, and validates going deeper on agents now rather than later: Microsoft's Build 2026 conference pushed hard into "agentic computing" as a primary theme ([source](https://windowsnews.ai/article/build-2026-reveals-microsofts-agent-first-ai-play-azure-copilot-and-the-value-chain-converge.428607)):
+Still directly relevant regardless of niche — Microsoft's Build 2026 conference pushed hard into "agentic computing" ([source](https://windowsnews.ai/article/build-2026-reveals-microsofts-agent-first-ai-play-azure-copilot-and-the-value-chain-converge.428607)):
 
-- **Teams AI Library** — the framework for building custom-engine agents natively in Teams, handling prompts, actions, model integration, and UI ([source](https://microsoft.github.io/copilot-camp/pages/custom-engine/teams-ai/))
-- **Copilot Studio's multi-agent framework** — built on Semantic Kernel, lets developers define agent orchestration with natural language or low-code tools ([source](https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/integrate-custom-azure-ai-agents-with-copilot-studio-and-m365-copilot/4405070))
-- **Azure Functions repositioned as "the best programming model for event-driven apps and agents"** — with native connectors to M365/Teams, MCP support, and Durable Tasks added at Build 2026 ([source](https://techcommunity.microsoft.com/blog/AppsonAzureBlog/azure-functions-at-build-2026-update/4524075))
-- Microsoft's own agents can "independently break down complex tasks, call APIs, query databases, and delegate sub-tasks to other agents" within governance boundaries — this is explicitly the direction the whole ecosystem is moving
+- **Teams AI Library** — framework for custom-engine agents natively in Teams (prompts, actions, model integration, UI)
+- **Copilot Studio's multi-agent framework** — built on Semantic Kernel, low-code agent orchestration
+- **Azure Functions repositioned for agents** — native M365/Teams connectors, MCP support, Durable Tasks added at Build 2026
 
-**Read:** Ryan is already fluent in the Azure Functions + Teams half of this stack. The gap to close is the AI-agent/LLM half — and Microsoft is actively building first-party tooling (Teams AI Library, Copilot Studio) that lowers the cost of closing it, rather than requiring everything to be hand-rolled. Worth evaluating Copilot Studio directly as a faster path to a sellable agent than building the orchestration layer from scratch.
+Ryan chose to hand-roll on Teams AI Library + Azure Functions rather than build on Copilot Studio (2026-07-18) — see [`../DECISIONS.md`](../DECISIONS.md) for the reasoning.
 
-## Pricing Evidence
+## MVP / Portfolio Piece
 
-Two very different price tiers exist depending on whether the product is "connector" or "agent" — this is the core strategic choice:
+**Concrete recommendation: a "New-Hire Onboarding Agent" demo, built with sample data, no real client required to start.**
 
-**Commodity connector tier (avoid competing here):**
-- Zapier/Make/n8n/Albato: free to ~$20–100/mo for basic Airtable↔Teams automations
+Scope: a Teams bot (Azure Functions + Teams AI Library) that, triggered by a new record in a demo Airtable "New Hires" base (or an @mention with hire details), automatically:
+1. Assigns the new hire to the correct Teams channels/groups for their role
+2. Assigns room/resource access (physical or virtual, per whatever's most demoable)
+3. Notifies the manager and IT with a live checklist of what's been completed automatically vs. what still needs manual action
+4. Tracks completion status back in Airtable
 
-**Consulting/implementation tier (Airtable-specific):**
-- Basic Airtable implementations: from $1,299 ([source](https://www.business-automated.com/tutorials/airtable-consultant-pricing))
-- Standard consulting projects (discovery + build): $5,000–15,000
-- Mid-market: $150–300/hour or $8,000–30,000/project
-- US-based hourly rates: $150–200/hr
-
-**Custom AI-agent/chatbot tier (the real target market):**
-- Simple rule-based chatbot: $5,000–30,000
-- **AI-powered chatbot with real NLP: $75,000–150,000** (agency-built) ([source](https://sitegpt.ai/blog/enterprise-ai-chatbot-platforms-cost-guide))
-- Enterprise AI chatbots: $30,000–1,000,000
-- Annual maintenance: 15–20% of build cost
-- For reference, Microsoft's own Copilot Studio costs businesses **$1,000/month for 2,000 sessions** just for the platform — meaning real budget already flows toward "Teams + AI agent" spend before any custom work is even purchased
-
-**Read:** the $75K–150K agency figure is an upper anchor, not a realistic solo-operator SMB price — but it establishes that "AI-powered Teams agent" is priced in a completely different universe than generic workflow automation ($500–3,000/mo retainers from the original automation-reselling research). A realistic SMB-focused wedge likely sits well below the agency ceiling — plausibly $2,000–15,000 for an initial build plus a $300–1,000/mo maintenance retainer — still multiples above plain Airtable consulting or generic Make.com/n8n work. This needs real validation, not treated as settled.
-
-## Target Customer
-
-Airtable's heaviest-use industries, per direct research ([source](https://bloomberry.com/data/airtable/), [source](https://builtonair.com/ultimate-airtable-guides/the-ultimate-guide-to-airtable-in-the-real-estate-industry/)):
-
-1. **Marketing/advertising agencies** — the single largest segment (10% of reviewers from small companies); manage content calendars, campaign tracking, vendor details in Airtable
-2. **Real estate** — listings, leads, contracts; increasingly Airtable-native for small/mid brokerages
-3. **Nonprofits** — fundraising, program/supply tracking, org management
-4. **Operations/project management teams generally** — flexible systems without heavy engineering overhead
-
-All four are plausible ICPs for a Teams-embedded agent that lets non-technical staff query/act on their Airtable data conversationally instead of opening the Airtable UI. Marketing agencies are the strongest early candidate: largest segment, already comfortable paying for tools, and often already using Teams internally.
-
-## Revenue Evidence
-
-Carried over from the broader automation-reselling research (still relevant as a floor, not the target):
-
-- Documented case: $25,000 MRR in 4 months from a solo n8n-focused operator (self-reported, treat as upper-bound anecdote)
-- Broader pattern: lean, specialized automation agencies reach $10,000–50,000/month within 6–12 months
-- Two "Scale"-tier clients ($7,000–12,000/month combined) can cover a solo founder's income target
-
-**With the sharper agent-tier pricing above, the ceiling is plausibly higher** — a single well-scoped AI-agent build at $5,000–15,000 plus retainer could match what previously required several generic-automation clients. This hasn't been validated against real willingness-to-pay yet.
+This is buildable within Ryan's available hours (10–20 hrs/week, realistic 1–3 week timeline for a demo-quality build) using entirely fake/sample data — no client relationship needed before starting. It directly demonstrates the exact pain point ($4,000–7,000/hire, 30–45 minutes, 18+ manual actions) with a live before/after, which is a far stronger sales tool than a written pitch alone. A short recorded walkthrough (Loom-style) of the demo becomes reusable outreach material.
 
 ## Risks
 
-- **Positioning collapse risk:** if marketing materials aren't disciplined about "agent that acts" vs. "integration that notifies," prospects will anchor to the free-tool price point, not the agency-tier price point. This is the single biggest risk to the whole pricing thesis above.
-- Every engagement is still custom by default — the productization discipline from the original automation-reselling research still applies
-- Client dependency risk on a maintenance retainer
-- Microsoft's own Copilot Studio is a potential competitor as much as a tool — if it gets good enough at low-code agent building, it could commoditize part of this market too; worth using it as infrastructure rather than positioning against it
+- **Positioning collapse risk:** if marketing materials aren't disciplined about "agent that acts" vs. "integration that notifies," prospects anchor to the free-tool price point, not the value-based project-fee anchor
+- Every engagement is still custom by default unless deliberately templated per the productization principle from the original automation-reselling research
+- Companies with real onboarding pain at scale (500+ employees, high compliance needs) are more likely to already be evaluating Rippling/Entra ID Governance rather than a solo operator — the sweet spot is real but has a ceiling; very large enterprises are a different sales motion entirely
+- Microsoft's own Copilot Studio improving over time is as much competition as infrastructure
 
 ## Open Questions
 
 Real discovery calls needed before locking positioning or pricing:
 
-- Which of the four target industries (marketing agencies, real estate, nonprofits, ops teams) should be the very first outreach focus — probably marketing agencies given segment size, but unvalidated
-- Realistic first-engagement price point for a strong technical background but no formal agency portfolio — should the first 1–2 clients be discounted/free for case-study purposes?
-- Build vs. buy on the agent orchestration layer: hand-rolled Teams AI Library + Azure Functions vs. Copilot Studio as a faster-to-market foundation — needs a technical spike, not just research
-- Fastest acquisition channel given 10–20 hrs/week: warm professional network vs. cold LinkedIn outreach vs. marketplace/partnership channels
+- Does the $4,000–7,000/hire figure resonate as-is with real prospects, or do they perceive their actual cost differently (e.g., IT time is "free" internally even if not literally free)?
+- What company size sweet spot actually converts — 50–150 employees vs. 150–300 vs. smaller/larger?
+- Realistic first-engagement price point given no formal agency portfolio yet — should the first 1–2 clients be discounted/free for case-study purposes, given the build+train (not retainer) model?
+- Fastest acquisition channel given 10–20 hrs/week: warm professional network vs. LinkedIn outreach targeting companies with visible hiring activity vs. partnership channels (recruiting agencies, HR consultants who already touch these clients)
 
 ## Sources
 
-- [Airtable + Microsoft Teams Integration — Albato](https://albato.com/connect/airtable-with-microsoft_teams)
+- [The Complete Guide to M365 User Onboarding — EasyEntra](https://easyentra.com/the-complete-guide-to-m365-user-onboarding/)
+- [Microsoft 365 User Onboarding Workflow For Easy User Provisioning — AdminDroid](https://blog.admindroid.com/microsoft-365-user-onboarding-workflow-for-easy-user-provisioning/)
+- [The Hidden Cost of Manual Onboarding in Microsoft 365](https://www.beyondintranet.com/blog/hidden-cost-of-manual-onboarding-microsoft-365/)
+- [Epiq streamlines employee onboarding with Power Automate — Microsoft Learn case study](https://learn.microsoft.com/en-us/power-platform/guidance/case-studies/streamline-employee-onboarding)
+- [Understanding Automated Provisioning Tools in 2026 — Zluri](https://www.zluri.com/blog/automated-provisioning-tools)
+- [Sync identities from Rippling to Microsoft Entra ID](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/sync-identities-from-rippling-to-microsoft-entra-id/4279690)
+- [Microsoft 365 Tenant-to-tenant Migration — CoreView](https://www.coreview.com/blog/microsoft-365-tenant-to-tenant-migration-a-comprehensive-guide-for-it-leaders)
+- [Microsoft 365 Tenant Migration for M&A: The Complete Playbook 2026](https://www.epcgroup.net/microsoft-365-tenant-migration-m-and-a-playbook-2026)
+- [Best Employee Onboarding Software for 2026 — pricing comparison](https://www.siit.io/blog/best-employee-onboarding-software)
 - [Build 2026 Reveals Microsoft's Agent-First AI Play](https://windowsnews.ai/article/build-2026-reveals-microsofts-agent-first-ai-play-azure-copilot-and-the-value-chain-converge.428607)
-- [Build your own agent with Teams AI library — Copilot Developer Camp](https://microsoft.github.io/copilot-camp/pages/custom-engine/teams-ai/)
-- [Integrate Custom Azure AI Agents with Copilot Studio and M365 Copilot](https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/integrate-custom-azure-ai-agents-with-copilot-studio-and-m365-copilot/4405070)
-- [Azure Functions at Build 2026 Update](https://techcommunity.microsoft.com/blog/AppsonAzureBlog/azure-functions-at-build-2026-update/4524075)
-- [How Much Does an Airtable Consultant Cost? (2026 Pricing Guide)](https://www.business-automated.com/tutorials/airtable-consultant-pricing)
-- [AI Chatbot Pricing Guide: Costs & Best AI Solutions for Enterprise and SMBs](https://sitegpt.ai/blog/enterprise-ai-chatbot-platforms-cost-guide)
+- [Airtable + Microsoft Teams Integration — Albato](https://albato.com/connect/airtable-with-microsoft_teams)
 - [Companies using Airtable (active customer list)](https://bloomberry.com/data/airtable/)
-- [The Ultimate Guide to Airtable in the Real Estate Industry](https://builtonair.com/ultimate-airtable-guides/the-ultimate-guide-to-airtable-in-the-real-estate-industry/)
-- [How I Achieved $25,000 Monthly Revenue with n8n](https://www.browseract.com/blog/best-high-income-case-analysis-how-to-achieve-25000-monthly-revenue-with-n8n)
