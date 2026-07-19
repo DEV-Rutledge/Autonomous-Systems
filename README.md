@@ -1,6 +1,6 @@
 ---
 title: AI Business Operating System (ABOS)
-version: 0.11.0
+version: 0.12.0
 status: foundation
 author: Ryan Rutledge
 last_updated: 2026-07-18
@@ -153,6 +153,7 @@ The repository itself is versioned as it grows:
 | 0.9 | Automation Studio Niche Narrowed to Onboarding |
 | 0.10 | Automation Studio MVP Scaffold Built |
 | 0.11 | Automation Studio Restructured as Modular Logistics Platform |
+| 0.12 | Airtable Schema-Creation Script for the Real Base |
 | ... | ... |
 | 1.0 | Launch Ready |
 

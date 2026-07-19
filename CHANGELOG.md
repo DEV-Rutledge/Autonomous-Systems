@@ -14,6 +14,13 @@ related:
 
 Chronological record of what shipped, in order. For *why* something changed, see [DECISIONS.md](DECISIONS.md); for what's true right now, see [CURRENT_STATE.md](CURRENT_STATE.md).
 
+## 0.12 — Airtable Schema-Creation Script for the Real Base (2026-07-19)
+
+- Ryan connected the real Airtable base: `Autonomous Systems Rutledgetech`
+- Added `src/scripts/createAirtableSchema.ts` — creates all 7 tables and their plain/link fields via Airtable's Meta API, matching `database/AIRTABLE_SCHEMA.md`
+- Documented the six rollup/lookup/formula fields the script deliberately doesn't create as an exact manual-setup checklist (they need visual verification anyway) — including a schema fix, a new `Role Baseline Time (min)` lookup on New Hires so ROI Log can reach the baseline in one hop instead of two
+- Updated `src/README.md`'s setup flow: create schema → manual computed fields → seed → run
+
 ## 0.11 — Automation Studio Restructured as Modular Logistics Platform (2026-07-19)
 
 - Corrected the venture's core framing after Ryan clarified "niche" meant client type, not product type — restructured from "onboarding is the product" to a modular Teams-embedded orchestration platform, with onboarding as module 1 of several, not the whole pitch
