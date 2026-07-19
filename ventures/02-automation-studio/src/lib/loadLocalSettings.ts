@@ -12,12 +12,19 @@
  *
  * No-op if the file doesn't exist (e.g. in a deployed environment, where
  * Application Settings inject env vars a different way).
+ *
+ * Resolved from process.cwd(), not __dirname — these scripts are always
+ * invoked via `npm run ...` from the src/ directory (where
+ * local.settings.json lives, alongside package.json), and __dirname-based
+ * relative paths break the moment this runs from compiled dist/ output
+ * instead of source (different folder depth) — see the bug this caused
+ * on first use, ../../ instead of ../ from src/lib/.
  */
 import * as fs from "fs";
 import * as path from "path";
 
 export function loadLocalSettings(): void {
-  const settingsPath = path.join(__dirname, "../../local.settings.json");
+  const settingsPath = path.join(process.cwd(), "local.settings.json");
 
   if (!fs.existsSync(settingsPath)) {
     return;

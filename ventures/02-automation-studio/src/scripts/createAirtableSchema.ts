@@ -1,8 +1,8 @@
 /**
- * Creates all 7 tables and their non-computed fields in a fresh Airtable
- * base, matching database/AIRTABLE_SCHEMA.md exactly. Run this ONCE
- * against an empty base (the script does not check for existing tables
- * and will error/duplicate if run twice against the same base).
+ * Creates all 7 tables and their non-computed fields in an Airtable base,
+ * matching database/AIRTABLE_SCHEMA.md exactly. Idempotent — safe to
+ * re-run after a partial failure; it checks what already exists and only
+ * creates what's missing.
  *
  * What this script does NOT create — see
  * database/AIRTABLE_SCHEMA.md § Computed Fields (Manual Setup) for why
@@ -59,6 +59,12 @@ interface TableSpec {
   fields: FieldSpec[];
 }
 
+interface ExistingTable {
+  id: string;
+  name: string;
+  fields: { id: string; name: string }[];
+}
+
 async function airtableFetch(path: string, method: string, body?: unknown) {
   const response = await fetch(`${META_BASE_URL}${path}`, {
     method,
@@ -76,13 +82,22 @@ async function airtableFetch(path: string, method: string, body?: unknown) {
   return response.json();
 }
 
+async function getExistingTables(): Promise<Map<string, ExistingTable>> {
+  const result = (await airtableFetch("/tables", "GET")) as { tables: ExistingTable[] };
+  return new Map(result.tables.map((t) => [t.name, t]));
+}
+
 const singleSelect = (choices: string[]) => ({
   choices: choices.map((name) => ({ name })),
 });
 
-// Phase 1: table definitions with only non-computed, non-link fields.
-// Every table needs at least one field on creation, which becomes the
-// primary field.
+// Primary field on table creation must be a plain text-like type —
+// Airtable's API rejects singleSelect/date as a *primary* field on create
+// even though the UI allows reordering fields to make them primary later
+// (found the hard way: singleSelect failed with
+// INVALID_TABLE_OR_PRIMARY_FIELD_FOR_CREATE). Junction/log tables that
+// don't have a natural text primary get a small placeholder text field
+// instead, listed first.
 const tableSpecs: TableSpec[] = [
   {
     name: "Teams Channels & Groups",
@@ -143,6 +158,7 @@ const tableSpecs: TableSpec[] = [
   {
     name: "Onboarding Checklist",
     fields: [
+      { name: "Instance Label", type: "singleLineText" },
       { name: "Status", type: "singleSelect", options: singleSelect(["Pending", "In Progress", "Complete"]) },
       { name: "Completed By", type: "singleSelect", options: singleSelect(["Bot", "Human"]) },
       {
@@ -155,6 +171,7 @@ const tableSpecs: TableSpec[] = [
   {
     name: "ROI Log",
     fields: [
+      { name: "Log Entry", type: "singleLineText" },
       { name: "Date", type: "date", options: { dateFormat: { name: "iso" } } },
       { name: "Notes", type: "multilineText" },
     ],
@@ -178,21 +195,39 @@ const linkFieldSpecs: Record<string, { fieldName: string; targetTable: string }[
 };
 
 async function main() {
-  console.log(`Creating schema in base ${baseId}...`);
+  console.log(`Checking existing tables in base ${baseId}...`);
+  let existing = await getExistingTables();
 
   const tableIdsByName = new Map<string, string>();
+  for (const [name, table] of existing) {
+    tableIdsByName.set(name, table.id);
+  }
 
   for (const spec of tableSpecs) {
+    if (existing.has(spec.name)) {
+      console.log(`Table "${spec.name}" already exists — skipping creation.`);
+      continue;
+    }
     console.log(`Creating table "${spec.name}"...`);
     const created = (await airtableFetch("/tables", "POST", spec)) as { id: string };
     tableIdsByName.set(spec.name, created.id);
   }
 
-  console.log("All tables created. Adding link fields...");
+  console.log("Refreshing table/field list before adding links...");
+  existing = await getExistingTables();
+
+  console.log("Adding link fields...");
 
   for (const [tableName, links] of Object.entries(linkFieldSpecs)) {
+    const table = existing.get(tableName);
     const tableId = tableIdsByName.get(tableName);
+    const existingFieldNames = new Set((table?.fields ?? []).map((f) => f.name));
+
     for (const link of links) {
+      if (existingFieldNames.has(link.fieldName)) {
+        console.log(`  "${tableName}" § "${link.fieldName}" already exists — skipping.`);
+        continue;
+      }
       const targetTableId = tableIdsByName.get(link.targetTable);
       console.log(`  "${tableName}" -> "${link.fieldName}" -> "${link.targetTable}"`);
       await airtableFetch(`/tables/${tableId}/fields`, "POST", {

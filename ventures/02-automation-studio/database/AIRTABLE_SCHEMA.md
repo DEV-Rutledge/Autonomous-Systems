@@ -108,6 +108,7 @@ The junction table — one row per (New Hire × Checklist Item), tracking actual
 
 | Field | Type | Notes |
 |---|---|---|
+| Instance Label | Single line text | Primary field — placeholder text, left blank; Airtable's API doesn't allow `singleSelect` as a primary field on table creation, so this table needs a plain-text field first |
 | New Hire | Link to New Hires | |
 | Checklist Item | Link to Checklist Items Library | |
 | Status | Single select | Pending / In Progress / Complete |
@@ -122,6 +123,7 @@ The table that makes the sales pitch concrete — one row per completed onboardi
 
 | Field | Type | Notes |
 |---|---|---|
+| Log Entry | Single line text | Primary field — placeholder text, left blank; same API restriction as Onboarding Checklist's `Instance Label` |
 | Date | Date | |
 | New Hire | Link to New Hires | |
 | Manual Baseline Time (min) | Lookup | From `New Hire` § `Role Baseline Time (min)` — **manual setup** |
