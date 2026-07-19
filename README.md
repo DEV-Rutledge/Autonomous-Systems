@@ -1,6 +1,6 @@
 ---
 title: AI Business Operating System (ABOS)
-version: 0.5.0
+version: 0.6.0
 status: foundation
 author: Ryan Rutledge
 last_updated: 2026-07-18
@@ -146,6 +146,7 @@ The repository itself is versioned as it grows:
 | 0.3 | Ventures Restructure |
 | 0.4 | Venture #1 (Lead Engine) Kickoff |
 | 0.5 | Governance & Documentation Standards |
+| 0.6 | Incubator Idea Batch: Autonomous Side-Income Options |
 | ... | ... |
 | 1.0 | Launch Ready |
 

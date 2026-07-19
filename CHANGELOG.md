@@ -14,6 +14,13 @@ related:
 
 Chronological record of what shipped, in order. For *why* something changed, see [DECISIONS.md](DECISIONS.md); for what's true right now, see [CURRENT_STATE.md](CURRENT_STATE.md).
 
+## 0.6 — Incubator Idea Batch: Autonomous Side-Income Options (2026-07-18)
+
+- Added `ventures/00-incubator/Ideas/` with 5 research-backed candidate ideas: `ai-newsletter`, `ai-social-media-service`, `ai-chatbot-service`, `ai-seo-content-agency`, `automation-reselling`
+- Independently verified/corrected several unsourced claims from an initial ChatGPT deep-research report (revenue figures, ticket-deflection rates, SEO pricing) against real 2026 sources
+- Added `automation-reselling` as a 5th option not in the original set — closest match to "build fully autonomous systems" as the product itself
+- Added `Ideas/README.md` with a comparative table and explicit relationship to `ventures/01-lead-engine/`
+
 ## 0.5 — Governance & Documentation Standards (2026-07-18)
 
 - Adopted `SCREAMING_SNAKE_CASE` naming for flagship venture documents (`MARKET_RESEARCH.md`, `BUSINESS_PLAN.md`, `TECHNICAL_ARCHITECTURE.md`)

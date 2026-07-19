@@ -91,6 +91,16 @@ Repo-wide architectural and governance decisions. Mirrors the per-venture `DECIS
 
 **Why:** each new file earns its place by having a genuinely distinct job, not just because it was proposed — this is the same duplication check applied throughout [Architecture.md § Shared vs. Per-Venture](Architecture.md#shared-vs-per-venture), extended to documentation types themselves.
 
+## Used the existing Incubator structure for a batch of externally-sourced idea candidates, rather than a new ad hoc format
+
+**Date:** 2026-07-18
+
+**Context:** Ryan hit ChatGPT's free-plan deep-research limits and asked Claude Code to independently run an equivalent research process across candidate autonomous side-income ideas (4 from an earlier ChatGPT report, evaluated in parallel with a 5th added here), delivered as "complete outline md files" per option.
+
+**Decision:** Placed these as `ventures/00-incubator/Ideas/<slug>/MarketResearch.md`, using the incubator pipeline that already existed for exactly this purpose, rather than inventing a new file layout. Each file is a single comprehensive outline (business model, architecture, costs, risks, sources) rather than split across the incubator's three separate templates — full checklist/scorecard treatment is deferred until a specific idea is chosen to pursue further, per [`Ideas/README.md`](ventures/00-incubator/Ideas/README.md#recommended-next-step).
+
+**Why:** the incubator was built for exactly this — evaluating multiple ideas with real evidence before committing build time — so reusing it kept the new research consistent with the rest of the repo instead of creating a parallel, one-off comparison document.
+
 ## ChatGPT and Claude Code collaborate via structured handoffs relayed by Ryan
 
 **Date:** 2026-07-18

@@ -1,6 +1,6 @@
 ---
 title: Incubator — AI Venture Studio
-version: 0.2.0
+version: 0.3.0
 status: foundation
 author: Ryan Rutledge
 last_updated: 2026-07-18
@@ -62,6 +62,8 @@ Ideas that don't clear stage 11 stay documented here as a record of what was con
 | [LaunchChecklist.md](LaunchChecklist.md) | 13 — final gate before going live, once promoted |
 
 ## How to Use This Folder
+
+See [`Ideas/README.md`](Ideas/README.md) for a live example — five candidate ideas researched and compared in parallel.
 
 Each new idea gets its own subfolder:
 
