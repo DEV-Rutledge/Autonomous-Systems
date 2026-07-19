@@ -1,6 +1,6 @@
 ---
 title: Automation Studio
-version: 0.5.0
+version: 0.6.0
 status: draft
 author: Ryan Rutledge
 last_updated: 2026-07-19
@@ -25,6 +25,7 @@ A modular Teams-embedded orchestration platform for logistics/fleet companies' b
 | The demo's sample data | [`database/seed-data/README.md`](database/seed-data/README.md) |
 | The actual starter code | [`src/README.md`](src/README.md) |
 | The planned ROI dashboard | [`docs/DashboardSpec.md`](docs/DashboardSpec.md) |
+| How to set up the Microsoft/Azure account for this venture | [`deployment/MicrosoftAccountSetup.md`](deployment/MicrosoftAccountSetup.md) |
 | What's shipped so far | [`CHANGELOG.md`](CHANGELOG.md) |
 
-`api/`, `automation/`, `prompts/`, `deployment/`, `marketing/`, `sales/`, `finance/`, `legal/`, `tasks/`, `diagrams/` remain empty, populated as each area gets built out — see [Architecture.md § Venture Folder Anatomy](../../Architecture.md#venture-folder-anatomy).
+`api/`, `automation/`, `prompts/`, `marketing/`, `sales/`, `finance/`, `legal/`, `tasks/`, `diagrams/` remain empty, populated as each area gets built out — see [Architecture.md § Venture Folder Anatomy](../../Architecture.md#venture-folder-anatomy).

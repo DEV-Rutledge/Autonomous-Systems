@@ -1,6 +1,6 @@
 ---
 title: Automation Studio — Changelog
-version: 0.2.0
+version: 0.3.0
 status: draft
 author: Ryan Rutledge
 last_updated: 2026-07-19
@@ -10,6 +10,10 @@ related:
 ---
 
 # Changelog
+
+## 2026-07-19 (continued)
+
+- Added `deployment/MicrosoftAccountSetup.md` — 7-phase walkthrough for setting up a dedicated Microsoft/Azure identity (personal account → Azure free tier → Entra ID tenant → Teams access → Function App → Bot registration → local.settings.json), kept separate from Ryan's employer accounts
 
 ## 2026-07-19
 
