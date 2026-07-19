@@ -1,6 +1,6 @@
 ---
 title: AI Business Operating System (ABOS)
-version: 0.6.0
+version: 0.7.0
 status: foundation
 author: Ryan Rutledge
 last_updated: 2026-07-18
@@ -99,8 +99,9 @@ Autonomous Systems/
 │
 ├── ventures/
 │   ├── 00-incubator/          # Every new idea starts here — see below
-│   └── 01-lead-engine/        # First validated venture — see Architecture.md for its deep taxonomy
-│   # New ventures are added as 02-..., 03-..., named only after clearing the incubator — no fixed cap
+│   ├── 01-lead-engine/        # AI lead-gen SaaS for home services — mid-research
+│   └── 02-automation-studio/  # Productized Make.com/n8n/Azure automation builds — priority venture
+│   # New ventures are added as 03-..., named only after clearing the incubator — no fixed cap
 │
 ├── Shared/                    # Reusable, cross-venture assets
 │   ├── Prompt-Library/
@@ -147,6 +148,7 @@ The repository itself is versioned as it grows:
 | 0.4 | Venture #1 (Lead Engine) Kickoff |
 | 0.5 | Governance & Documentation Standards |
 | 0.6 | Incubator Idea Batch: Autonomous Side-Income Options |
+| 0.7 | Venture #2 (Automation Studio) Promoted |
 | ... | ... |
 | 1.0 | Launch Ready |
 

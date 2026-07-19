@@ -101,6 +101,16 @@ Repo-wide architectural and governance decisions. Mirrors the per-venture `DECIS
 
 **Why:** the incubator was built for exactly this — evaluating multiple ideas with real evidence before committing build time — so reusing it kept the new research consistent with the rest of the repo instead of creating a parallel, one-off comparison document.
 
+## Promoted automation-reselling to ventures/02-automation-studio via direct interview, ahead of Lead Engine reaching build stage
+
+**Date:** 2026-07-18
+
+**Context:** Ryan asked to be interviewed (time availability, client-facing tolerance, maintenance appetite, gut interest) to pick the best-fit option from the incubator's idea batch, given explicit and real financial urgency. All four interview signals converged on `automation-reselling` — see [`ventures/00-incubator/Ideas/automation-reselling/Scorecard.md`](ventures/00-incubator/Ideas/automation-reselling/Scorecard.md) (8.0/10) and [`ventures/02-automation-studio/DECISIONS.md`](ventures/02-automation-studio/DECISIONS.md) for the full record.
+
+**Decision:** Promoted `automation-reselling` to `ventures/02-automation-studio/`, ahead of `ventures/01-lead-engine/` reaching its own build stage. Lead Engine is not abandoned — both are active, with Automation Studio prioritized for faster revenue given the stated urgency.
+
+**Why:** the repo's own philosophy treats ABOS as a living, multi-venture system rather than a strict one-at-a-time sequence — see [README.md § Mission](README.md#mission). Forcing ventures to complete in strict numeric order would subordinate a real, time-sensitive financial need to an arbitrary ordering rule.
+
 ## ChatGPT and Claude Code collaborate via structured handoffs relayed by Ryan
 
 **Date:** 2026-07-18
