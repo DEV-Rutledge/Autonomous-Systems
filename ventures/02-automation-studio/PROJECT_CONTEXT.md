@@ -1,6 +1,6 @@
 ---
 title: Automation Studio — Project Context
-version: 0.5.0
+version: 0.6.0
 status: draft
 author: Ryan Rutledge
 last_updated: 2026-07-19
@@ -47,5 +47,13 @@ Open to hiring later if stretched thin across multiple engagements — not an im
 **Current stage:** Module 1 (Onboarding) has a full MVP scaffold — see [`src/README.md § What's Real vs. Stubbed`](src/README.md#whats-real-vs-stubbed). Module 2 (Vehicle/Asset Issue & Status Tracking) is designed (schema + architecture) but not yet coded — see [`architecture/TECHNICAL_ARCHITECTURE.md § Module 2`](architecture/TECHNICAL_ARCHITECTURE.md#module-2-vehicleasset-issue--status-tracking). Neither module has been run against live credentials or validated against real conversations.
 
 **Tech stack:** Azure Functions + Teams AI Library as the core agent layer; Airtable as the first backend; Claude Code for dashboard/web-portal frontend work; ChatGPT/Claude APIs for the LLM reasoning layer.
+
+**Real infrastructure costs (verified 2026-07-19, given real funding constraints):**
+- Airtable: free tier, already sufficient
+- Azure Functions: free — 1M requests + 400,000 GB-s/month, forever, far more than this needs
+- Azure Bot Service (Teams/Web Chat channel): free
+- **Microsoft 365 tenant for Teams testing — the one real cost.** The free Microsoft 365 Developer Program sandbox is *not* available to Ryan — Microsoft restricted it in early 2025 to Visual Studio Professional/Enterprise subscribers or Microsoft AI Cloud Partner Program members. Two paths: (1) try a free Azure account + free Microsoft Entra ID tenant first — documented as sufficient for bot registration and Graph API development, though it's unverified whether that alone is enough to test live inside a real Teams client; (2) if not, the cheapest paid fallback is Microsoft 365 Business Basic at ~$8.40/user/month, needing only one license.
+- LLM API (OpenAI/Claude, the agent's reasoning layer): not free, but small — a few dollars/month at demo scale
+- **Realistic worst case: ~$10–15/month total.** This also validates the hand-rolled-over-Copilot-Studio build decision from a budget angle, not just a control angle — Copilot Studio alone runs $1,000/month.
 
 **Folder layout:** follows [Architecture.md § Venture Folder Anatomy](../../Architecture.md#venture-folder-anatomy).

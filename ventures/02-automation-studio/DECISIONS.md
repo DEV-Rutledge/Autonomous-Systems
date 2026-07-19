@@ -1,15 +1,27 @@
 ---
 title: Automation Studio — Decision Log
-version: 0.1.0
+version: 0.2.0
 status: draft
 author: Ryan Rutledge
-last_updated: 2026-07-18
+last_updated: 2026-07-19
 related:
   - PROJECT_CONTEXT.md
   - ../00-incubator/Ideas/automation-reselling/Scorecard.md
 ---
 
 # Decision Log
+
+## Verified real infrastructure costs given funding constraints — corrected an assumption
+
+**Date:** 2026-07-19
+
+**Context:** Ryan asked directly whether a free-tier Microsoft account would cover what's needed, given limited funding. Research corrected an assumption from earlier in the build: the free Microsoft 365 Developer Program sandbox tenant — the standard free path for Teams app development — was restricted in early 2025 to Visual Studio Professional/Enterprise subscribers or Microsoft AI Cloud Partner Program members. Ryan doesn't qualify for either.
+
+**Finding:** everything else needed is genuinely free (Airtable free tier, Azure Functions' 1M-request/month free grant, Azure Bot Service's free standard channels). The one real gap is a Microsoft 365 tenant for live Teams testing — a free Azure account + free Microsoft Entra ID tenant is the documented workaround (untested whether it's sufficient alone), with Microsoft 365 Business Basic (~$8.40/user/month, one license needed) as the cheapest paid fallback if not. LLM API costs (OpenAI/Claude) are small but real, estimated a few dollars/month at demo scale.
+
+**Decision:** documented as "real infrastructure costs" in [`PROJECT_CONTEXT.md`](PROJECT_CONTEXT.md) — realistic worst case ~$10–15/month. Try the free Entra tenant path before paying for anything.
+
+**Why:** this also retroactively validates the earlier hand-rolled-vs-Copilot-Studio build decision from a budget angle (Copilot Studio alone costs $1,000/month) — worth stating explicitly since it reinforces that decision was right for more than one reason.
 
 ## Corrected: niche means client type, not product type — restructured as a modular platform
 
