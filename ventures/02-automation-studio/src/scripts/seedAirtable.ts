@@ -3,9 +3,14 @@
  * database/seed-data/*.json, creating records in dependency order and
  * wiring up linked-record fields (which a plain CSV import can't do).
  *
+ * Uses raw fetch against the Airtable Data API directly, not the
+ * `airtable` npm package -- see lib/airtableClient.ts's doc comment for
+ * why (its bundled types don't match its own documented batch-create
+ * call shape).
+ *
  * Usage:
- *   1. Create the base and all 7 tables by hand in Airtable, matching
- *      database/AIRTABLE_SCHEMA.md exactly (field names/types must match).
+ *   1. Run the schema first: npm run create-schema, then add the manual
+ *      computed fields per database/AIRTABLE_SCHEMA.md.
  *   2. Copy local.settings.json.example -> local.settings.json and fill in
  *      AIRTABLE_API_KEY / AIRTABLE_BASE_ID.
  *   3. Run: npm run seed
@@ -17,7 +22,6 @@
 import { loadLocalSettings } from "../lib/loadLocalSettings";
 loadLocalSettings();
 
-import Airtable from "airtable";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -29,8 +33,30 @@ if (!apiKey || !baseId) {
   process.exit(1);
 }
 
-const base = new Airtable({ apiKey }).base(baseId);
+const DATA_BASE_URL = `https://api.airtable.com/v0/${baseId}`;
 const seedDataDir = path.join(__dirname, "../../database/seed-data");
+
+interface AirtableRecord {
+  id: string;
+  fields: Record<string, unknown>;
+}
+
+async function airtableRequest(path: string, method: string, body?: unknown): Promise<unknown> {
+  const response = await fetch(`${DATA_BASE_URL}${path}`, {
+    method,
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+
+  if (!response.ok) {
+    throw new Error(`${method} ${path} failed: ${response.status} ${await response.text()}`);
+  }
+
+  return response.json();
+}
 
 function loadSeedFile<T>(filename: string): T {
   const filePath = path.join(seedDataDir, filename);
@@ -48,10 +74,11 @@ async function seedLookupTable(
   // Airtable's create API accepts up to 10 records per call.
   for (let i = 0; i < records.length; i += 10) {
     const batch = records.slice(i, i + 10);
-    const created = await base(tableName).create(
-      batch.map((fields) => ({ fields }))
-    );
-    created.forEach((record, idx) => {
+    const result = (await airtableRequest(`/${encodeURIComponent(tableName)}`, "POST", {
+      records: batch.map((fields) => ({ fields })),
+    })) as { records: AirtableRecord[] };
+
+    result.records.forEach((record, idx) => {
       const key = batch[idx][primaryFieldSource] as string;
       nameToId.set(key, record.id);
     });
