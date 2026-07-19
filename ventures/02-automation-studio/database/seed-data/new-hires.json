@@ -1,0 +1,74 @@
+[
+  {
+    "fullName": "Jordan Reyes",
+    "email": "jordan.reyes@example.com",
+    "startDate": "2026-08-03",
+    "department": "Engineering",
+    "role": "Software Engineer",
+    "managerName": "Priya Nair",
+    "managerEmail": "priya.nair@example.com",
+    "status": "Complete",
+    "botStartedAt": "2026-07-15T09:02:00Z",
+    "botCompletedAt": "2026-07-15T09:09:00Z"
+  },
+  {
+    "fullName": "Alicia Chen",
+    "email": "alicia.chen@example.com",
+    "startDate": "2026-08-03",
+    "department": "Sales",
+    "role": "Sales Representative",
+    "managerName": "Marcus Webb",
+    "managerEmail": "marcus.webb@example.com",
+    "status": "Complete",
+    "botStartedAt": "2026-07-15T09:15:00Z",
+    "botCompletedAt": "2026-07-15T09:21:00Z"
+  },
+  {
+    "fullName": "Devon Marshall",
+    "email": "devon.marshall@example.com",
+    "startDate": "2026-08-10",
+    "department": "Marketing",
+    "role": "Marketing Coordinator",
+    "managerName": "Elena Torres",
+    "managerEmail": "elena.torres@example.com",
+    "status": "Complete",
+    "botStartedAt": "2026-07-16T10:30:00Z",
+    "botCompletedAt": "2026-07-16T10:36:00Z"
+  },
+  {
+    "fullName": "Sam Okafor",
+    "email": "sam.okafor@example.com",
+    "startDate": "2026-08-10",
+    "department": "Support",
+    "role": "Customer Support Specialist",
+    "managerName": "Rita Alvarado",
+    "managerEmail": "rita.alvarado@example.com",
+    "status": "In Progress",
+    "botStartedAt": "2026-07-18T08:00:00Z",
+    "botCompletedAt": null
+  },
+  {
+    "fullName": "Taylor Kim",
+    "email": "taylor.kim@example.com",
+    "startDate": "2026-08-17",
+    "department": "Operations",
+    "role": "Office Administrator",
+    "managerName": "Priya Nair",
+    "managerEmail": "priya.nair@example.com",
+    "status": "In Progress",
+    "botStartedAt": "2026-07-18T11:00:00Z",
+    "botCompletedAt": null
+  },
+  {
+    "fullName": "Morgan Ellis",
+    "email": "morgan.ellis@example.com",
+    "startDate": "2026-08-24",
+    "department": "Engineering",
+    "role": "Software Engineer",
+    "managerName": "Priya Nair",
+    "managerEmail": "priya.nair@example.com",
+    "status": "Not Started",
+    "botStartedAt": null,
+    "botCompletedAt": null
+  }
+]

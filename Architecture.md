@@ -1,6 +1,6 @@
 ---
 title: ABOS Architecture
-version: 0.5.0
+version: 0.6.0
 status: foundation
 author: Ryan Rutledge
 last_updated: 2026-07-18
@@ -90,9 +90,10 @@ ventures/NN-venture-slug/
 ├── docs/                  # BUSINESS_PLAN.md and other overview/strategy docs
 ├── research/              # MARKET_RESEARCH.md (the flagship, gold-standard doc — see DevelopmentStandards.md) and other sources backing docs/
 ├── architecture/          # Technical architecture, system design, service boundaries
-├── database/              # Schema, ER diagrams, migrations strategy
+├── database/              # Schema, ER diagrams, migrations strategy, seed data
 ├── api/                   # API contracts and endpoint specs
 ├── automation/            # Make.com / n8n workflow specs
+├── src/                   # Actual application source code — see note below
 ├── prompts/               # Versioned prompt library (one file per prompt, with eval notes)
 ├── deployment/             # CI/CD, hosting, environments
 ├── marketing/               # Marketing engine: channels, content strategy, SEO
@@ -106,6 +107,8 @@ ventures/NN-venture-slug/
 The six root-level files (`README.md`, `CLAUDE.md`, `GPT.md`, `PROJECT_CONTEXT.md`, `DECISIONS.md`, `CHANGELOG.md`) stay at the venture's top level, not nested in a subfolder — an agent (or Ryan) opening the folder needs to find them immediately without digging. `README.md` and `PROJECT_CONTEXT.md` have distinct, non-overlapping jobs: `README.md` is a short human-facing tour of the folder (what's here, where to look — same role the incubator's own `README.md` plays); `PROJECT_CONTEXT.md` is the longer AI-agent context primer (scope, constraints, current stage). Everything else is organized by function into its subfolder.
 
 This is the minimum set. Individual ventures can add more docs or subfolders as needed, but should not remove any of the above without a note in that venture's own `DECISIONS.md`.
+
+**`src/` vs. `api/`/`automation/`:** `api/` and `automation/` hold *specs* — contracts and workflow descriptions, written before or alongside a build. `src/` holds the actual runnable source code once a venture starts building for real (added when `ventures/02-automation-studio` needed a home for real Azure Function / Teams bot code and none of the existing folders fit — see its `DECISIONS.md`). Keep specs and code in sync by linking between them, not by duplicating content.
 
 Depth matters here: a subfolder like `architecture/` or `database/` is expected to hold real, researched documentation once a venture is actively being built — enough that a senior engineer who has never spoken to Ryan could read it and start implementing confidently, not a bullet-point stub.
 

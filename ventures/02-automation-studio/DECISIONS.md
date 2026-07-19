@@ -72,3 +72,23 @@ related:
 **Decision:** Ryan explicitly prefers either (a) building the system and training the client's tech team, with a one-time project fee and no retainer, or (b) staying involved only at a high, expertise-reflecting rate — not cheap ongoing support. Pricing framing shifts from build-hours-based to avoided-cost-based, given the onboarding niche's quantified overhead figure ($4,000–7,000/hire) — see [`research/MARKET_RESEARCH.md § Engagement Model & Pricing`](research/MARKET_RESEARCH.md#engagement-model--pricing).
 
 **Why:** matches Ryan's own stated preference and time constraints — a portfolio of low-value $500/mo retainers doesn't scale well against a 10–20 hrs/week ceiling, whereas a handful of well-scoped, well-paid build-and-train engagements does.
+
+## Build one demo, targeting one niche — not multiple Airtable bases across business types
+
+**Date:** 2026-07-18
+
+**Context:** Ryan proposed building multiple demo Airtable bases, each targeted at a different business type, and explicitly asked whether one niche should be targeted first instead — with the condition that if it's one niche, it should be technologically underserved, high-revenue, and growing.
+
+**Decision:** One niche, one demo: new-hire onboarding/provisioning (already selected — see the two "sharpened positioning" entries above). It satisfies all three of Ryan's stated criteria on the evidence already gathered: underserved (no direct competitor offers a lightweight Teams-native conversational agent at this price point), high-revenue (quantified $4,000–7,000/hire overhead), and growing (every hiring company is a fresh prospect, and Microsoft's own platform investment is moving the same direction).
+
+**Why:** splitting limited hours (10–20/week) across multiple demo bases directly contradicts the productization/niching principle already established in this venture's own research — one excellent, quantified demo beats several thin ones, and it's faster to first revenue.
+
+## Added src/ to the venture folder structure for real application code
+
+**Date:** 2026-07-18
+
+**Context:** Starting the actual onboarding-agent build surfaced a gap in [Architecture.md § Venture Folder Anatomy](../../Architecture.md#venture-folder-anatomy) — `api/` and `automation/` hold specs, not runnable code, and there was no folder for the real Azure Function / Teams bot source.
+
+**Decision:** Added `src/` to the repo-wide venture anatomy (applies to all ventures, not just this one) — see [Architecture.md](../../Architecture.md) and root [DECISIONS.md](../../DECISIONS.md).
+
+**Why:** a real gap, not specific to this venture — every venture will eventually need a home for actual source code once it moves past planning.

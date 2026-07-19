@@ -1,6 +1,6 @@
 ---
 title: Automation Studio
-version: 0.3.0
+version: 0.4.0
 status: draft
 author: Ryan Rutledge
 last_updated: 2026-07-18
@@ -19,7 +19,12 @@ A custom-built new-hire onboarding and provisioning agent embedded in Microsoft 
 |---|---|
 | AI-agent context before working here (real constraints included) | [`PROJECT_CONTEXT.md`](PROJECT_CONTEXT.md) |
 | The evidence behind this venture | [`research/MARKET_RESEARCH.md`](research/MARKET_RESEARCH.md) |
-| Why it was chosen over five other candidates | [`DECISIONS.md`](DECISIONS.md) |
+| Why it was chosen, and every build/positioning decision since | [`DECISIONS.md`](DECISIONS.md) |
+| How the onboarding agent actually works | [`architecture/TECHNICAL_ARCHITECTURE.md`](architecture/TECHNICAL_ARCHITECTURE.md) |
+| The Airtable data model | [`database/AIRTABLE_SCHEMA.md`](database/AIRTABLE_SCHEMA.md) |
+| The demo's sample data | [`database/seed-data/README.md`](database/seed-data/README.md) |
+| The actual starter code | [`src/README.md`](src/README.md) |
+| The planned ROI dashboard | [`docs/DashboardSpec.md`](docs/DashboardSpec.md) |
 | What's shipped so far | [`CHANGELOG.md`](CHANGELOG.md) |
 
-Everything else — `docs/`, `architecture/`, `database/`, `api/`, `automation/`, `prompts/`, `deployment/`, `marketing/`, `sales/`, `finance/`, `legal/`, `tasks/`, `diagrams/` — follows [Architecture.md § Venture Folder Anatomy](../../Architecture.md#venture-folder-anatomy) and is populated as each area gets built out. `docs/BUSINESS_PLAN.md` is the next flagship document, once `research/MARKET_RESEARCH.md` is deepened past its current first-draft state.
+`api/`, `automation/`, `prompts/`, `deployment/`, `marketing/`, `sales/`, `finance/`, `legal/`, `tasks/`, `diagrams/` remain empty, populated as each area gets built out — see [Architecture.md § Venture Folder Anatomy](../../Architecture.md#venture-folder-anatomy).

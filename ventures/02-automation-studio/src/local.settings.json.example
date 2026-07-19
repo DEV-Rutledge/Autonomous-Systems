@@ -1,0 +1,13 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "AIRTABLE_API_KEY": "pat_xxxxxxxxxxxxxxxx",
+    "AIRTABLE_BASE_ID": "app_xxxxxxxxxxxxxxxx",
+    "MICROSOFT_APP_ID": "your-teams-app-id",
+    "MICROSOFT_APP_PASSWORD": "your-teams-app-secret",
+    "GRAPH_TENANT_ID": "your-tenant-id",
+    "ONBOARDING_TEAMS_CHANNEL_ID": "channel-id-for-onboarding-checklist-posts"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "onboarding-agent",
+  "version": "0.1.0",
+  "description": "New-hire onboarding/provisioning agent for Microsoft Teams, backed by Airtable. Demo build for Automation Studio.",
+  "main": "dist/functions/onboardingOrchestrator.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "func start",
+    "seed": "ts-node scripts/seedAirtable.ts",
+    "lint": "eslint . --ext .ts"
+  },
+  "dependencies": {
+    "@azure/functions": "^4.5.0",
+    "@microsoft/teams-ai": "^1.5.0",
+    "botbuilder": "^4.23.0",
+    "airtable": "^0.12.2",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4",
+    "ts-node": "^10.9.2",
+    "@types/node": "^20.14.0",
+    "eslint": "^8.57.0",
+    "@typescript-eslint/eslint-plugin": "^7.16.0",
+    "@typescript-eslint/parser": "^7.16.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

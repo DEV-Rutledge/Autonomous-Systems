@@ -14,6 +14,15 @@ related:
 
 Chronological record of what shipped, in order. For *why* something changed, see [DECISIONS.md](DECISIONS.md); for what's true right now, see [CURRENT_STATE.md](CURRENT_STATE.md).
 
+## 0.10 — Automation Studio MVP Scaffold Built (2026-07-18)
+
+- Added `src/` to the repo-wide venture folder anatomy — `api/`/`automation/` hold specs, nothing existed for real runnable code
+- `ventures/02-automation-studio/database/AIRTABLE_SCHEMA.md`: 7-table schema (New Hires, Role Templates, Teams Channels & Groups, Rooms & Resources, Checklist Items Library, Onboarding Checklist, ROI Log) plus realistic seed data for a 5-department fictional company
+- `ventures/02-automation-studio/architecture/TECHNICAL_ARCHITECTURE.md`: full agent flow (trigger → role lookup → Teams/resource provisioning → checklist → ROI logging), system diagram, dashboard tie-in
+- `ventures/02-automation-studio/docs/DashboardSpec.md`: target spec for the ROI dashboard (pipeline view, ROI summary, per-hire timeline)
+- `ventures/02-automation-studio/src/`: real starter code — typed Airtable client, Microsoft Graph client, Adaptive Card builder, HTTP-triggered orchestrator Azure Function, Teams AI Library bot skeleton, and a seeding script that populates a fresh Airtable base from the seed data with linked records intact. Not yet run against live credentials — see `src/README.md § What's Real vs. Stubbed`
+- Added `local.settings.json` (Azure Functions' real-secrets file) to `.gitignore` — wasn't previously covered
+
 ## 0.9 — Automation Studio Niche Narrowed to Onboarding (2026-07-18)
 
 - Narrowed `ventures/02-automation-studio` from a general Teams-agent-on-Airtable pitch to a specific niche: new-hire onboarding/provisioning automation, after Ryan's stated capabilities (room assignment, employee batching to tenant, org onboarding) pointed there more directly than the marketing-agency framing

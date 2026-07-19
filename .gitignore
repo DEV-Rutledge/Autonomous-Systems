@@ -4,6 +4,8 @@
 !.env.example
 *.pem
 *.key
+local.settings.json
+!local.settings.json.example
 
 # Dependencies
 node_modules/

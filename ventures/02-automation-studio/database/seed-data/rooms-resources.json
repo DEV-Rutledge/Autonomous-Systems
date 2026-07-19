@@ -1,0 +1,11 @@
+[
+  { "resourceName": "Desk — Engineering Floor", "type": "Desk", "department": "Engineering", "notes": "Open-plan, 24 desks" },
+  { "resourceName": "Desk — Sales Floor", "type": "Desk", "department": "Sales", "notes": "Open-plan, 16 desks" },
+  { "resourceName": "Desk — Marketing Floor", "type": "Desk", "department": "Marketing", "notes": "Open-plan, 12 desks, shared with Operations" },
+  { "resourceName": "Desk — Support Floor", "type": "Desk", "department": "Support", "notes": "Open-plan, 20 desks" },
+  { "resourceName": "GitHub/GitLab License", "type": "Software License", "department": "Engineering", "notes": "Seat-based, request via IT" },
+  { "resourceName": "CRM License", "type": "Software License", "department": "Sales", "notes": "Seat-based" },
+  { "resourceName": "Design Software License", "type": "Software License", "department": "Marketing", "notes": "Seat-based, Creative Cloud" },
+  { "resourceName": "Help Desk Software License", "type": "Software License", "department": "Support", "notes": "Seat-based" },
+  { "resourceName": "Conference Room A (shared)", "type": "Meeting Room", "department": "Company-Wide", "notes": "Bookable, 10-person capacity" }
+]

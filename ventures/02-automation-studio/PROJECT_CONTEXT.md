@@ -1,6 +1,6 @@
 ---
 title: Automation Studio — Project Context
-version: 0.3.0
+version: 0.4.0
 status: draft
 author: Ryan Rutledge
 last_updated: 2026-07-18
@@ -36,7 +36,7 @@ If client load grows to the point of being stretched thin across multiple engage
 
 **Why this beats generic automation reselling or plain integrations (research-backed):** custom AI-powered chatbots with real NLP price at $75,000–150,000 for agency builds — a different value tier than generic Make.com/n8n retainers ($500–3,000/mo) or plain Airtable-Teams notification integrations (free-to-cheap via Zapier/Make/n8n — a race to the bottom to avoid). The wedge is the agent layer that takes action, not the connector.
 
-**Current stage:** niche narrowed to new-hire onboarding/provisioning (2026-07-18) — see [`research/MARKET_RESEARCH.md § Primary Niche`](research/MARKET_RESEARCH.md#primary-niche-new-hire-onboarding--provisioning-agent). Not yet validated against real conversations. Next concrete step is a demo-quality MVP built with sample data — see [`research/MARKET_RESEARCH.md § MVP / Portfolio Piece`](research/MARKET_RESEARCH.md#mvp--portfolio-piece).
+**Current stage:** MVP scaffold built (2026-07-18) — Airtable schema, seed data, technical architecture, dashboard spec, and starter Azure Function/Teams bot code all exist. Not yet run against live credentials, and not yet validated against real conversations. See [`src/README.md § What's Real vs. Stubbed`](src/README.md#whats-real-vs-stubbed) for exactly what works today vs. what's a placeholder.
 
 **Tech stack:** Azure Functions + Teams AI Library as the core agent layer; Airtable as the first backend; Claude Code for any dashboard/web-portal frontend work; ChatGPT/Claude APIs for the LLM reasoning layer.
 

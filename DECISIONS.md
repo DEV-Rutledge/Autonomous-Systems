@@ -101,6 +101,16 @@ Repo-wide architectural and governance decisions. Mirrors the per-venture `DECIS
 
 **Why:** the incubator was built for exactly this — evaluating multiple ideas with real evidence before committing build time — so reusing it kept the new research consistent with the rest of the repo instead of creating a parallel, one-off comparison document.
 
+## Added src/ to the venture folder anatomy for real application code
+
+**Date:** 2026-07-18
+
+**Context:** `ventures/02-automation-studio` moved from planning into actually building its onboarding-agent demo, and no existing folder in [Architecture.md § Venture Folder Anatomy](Architecture.md#venture-folder-anatomy) fit real source code — `api/` and `automation/` hold specs, not runnable code.
+
+**Decision:** Added `src/` to the repo-wide venture anatomy (all ventures, not just this one).
+
+**Why:** every venture will eventually need a home for real code once it moves past the planning stage — better to add it once, repo-wide, than let each venture invent its own convention. See [`ventures/02-automation-studio/DECISIONS.md`](ventures/02-automation-studio/DECISIONS.md) for the venture-level record.
+
 ## Promoted automation-reselling to ventures/02-automation-studio via direct interview, ahead of Lead Engine reaching build stage
 
 **Date:** 2026-07-18

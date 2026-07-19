@@ -1,0 +1,11 @@
+[
+  { "channelName": "Engineering — General", "team": "Engineering", "type": "Channel" },
+  { "channelName": "Engineering — Dev Alerts", "team": "Engineering", "type": "Channel" },
+  { "channelName": "Sales — General", "team": "Sales", "type": "Channel" },
+  { "channelName": "Sales — Deal Room", "team": "Sales", "type": "Channel" },
+  { "channelName": "Marketing — General", "team": "Marketing", "type": "Channel" },
+  { "channelName": "Marketing — Content Calendar", "team": "Marketing", "type": "Channel" },
+  { "channelName": "Support — General", "team": "Support", "type": "Channel" },
+  { "channelName": "Support — Escalations", "team": "Support", "type": "Channel" },
+  { "channelName": "All-Company Announcements", "team": "Company-Wide", "type": "Channel" }
+]

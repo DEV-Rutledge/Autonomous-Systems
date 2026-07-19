@@ -1,0 +1,14 @@
+[
+  { "itemName": "Create Microsoft 365 mailbox", "category": "IT", "owner": "Bot-Automated", "standardManualTimeMin": 10 },
+  { "itemName": "Assign Teams channels", "category": "IT", "owner": "Bot-Automated", "standardManualTimeMin": 15 },
+  { "itemName": "Assign software licenses", "category": "IT", "owner": "Bot-Automated", "standardManualTimeMin": 10 },
+  { "itemName": "Set up VPN/security access", "category": "IT", "owner": "Bot-Automated", "standardManualTimeMin": 15 },
+  { "itemName": "Add to relevant distribution lists", "category": "IT", "owner": "Bot-Automated", "standardManualTimeMin": 10 },
+  { "itemName": "Post welcome message", "category": "IT", "owner": "Bot-Automated", "standardManualTimeMin": 2 },
+  { "itemName": "Assign desk/workspace", "category": "Facilities", "owner": "Bot-Automated", "standardManualTimeMin": 10 },
+  { "itemName": "Order equipment (laptop, monitor)", "category": "IT", "owner": "IT Staff", "standardManualTimeMin": 20 },
+  { "itemName": "Schedule first-day orientation", "category": "HR", "owner": "Manager", "standardManualTimeMin": 15 },
+  { "itemName": "Add to payroll system", "category": "HR", "owner": "IT Staff", "standardManualTimeMin": 20 },
+  { "itemName": "Assign onboarding buddy", "category": "Manager", "owner": "Manager", "standardManualTimeMin": 5 },
+  { "itemName": "Grant building access badge", "category": "Facilities", "owner": "Facilities", "standardManualTimeMin": 15 }
+]

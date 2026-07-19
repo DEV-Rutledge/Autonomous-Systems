@@ -1,0 +1,103 @@
+[
+  {
+    "roleName": "Software Engineer",
+    "department": "Engineering",
+    "requiredChannels": ["Engineering — General", "Engineering — Dev Alerts", "All-Company Announcements"],
+    "requiredResources": ["Desk — Engineering Floor", "GitHub/GitLab License", "Conference Room A (shared)"],
+    "requiredChecklistItems": [
+      "Create Microsoft 365 mailbox",
+      "Assign Teams channels",
+      "Assign software licenses",
+      "Set up VPN/security access",
+      "Add to relevant distribution lists",
+      "Post welcome message",
+      "Assign desk/workspace",
+      "Order equipment (laptop, monitor)",
+      "Schedule first-day orientation",
+      "Add to payroll system",
+      "Assign onboarding buddy",
+      "Grant building access badge"
+    ],
+    "typicalManualOnboardingTimeMin": 147
+  },
+  {
+    "roleName": "Sales Representative",
+    "department": "Sales",
+    "requiredChannels": ["Sales — General", "Sales — Deal Room", "All-Company Announcements"],
+    "requiredResources": ["Desk — Sales Floor", "CRM License", "Conference Room A (shared)"],
+    "requiredChecklistItems": [
+      "Create Microsoft 365 mailbox",
+      "Assign Teams channels",
+      "Assign software licenses",
+      "Add to relevant distribution lists",
+      "Post welcome message",
+      "Assign desk/workspace",
+      "Order equipment (laptop, monitor)",
+      "Schedule first-day orientation",
+      "Add to payroll system",
+      "Assign onboarding buddy",
+      "Grant building access badge"
+    ],
+    "typicalManualOnboardingTimeMin": 132
+  },
+  {
+    "roleName": "Marketing Coordinator",
+    "department": "Marketing",
+    "requiredChannels": ["Marketing — General", "Marketing — Content Calendar", "All-Company Announcements"],
+    "requiredResources": ["Desk — Marketing Floor", "Design Software License"],
+    "requiredChecklistItems": [
+      "Create Microsoft 365 mailbox",
+      "Assign Teams channels",
+      "Assign software licenses",
+      "Add to relevant distribution lists",
+      "Post welcome message",
+      "Assign desk/workspace",
+      "Order equipment (laptop, monitor)",
+      "Schedule first-day orientation",
+      "Add to payroll system",
+      "Assign onboarding buddy",
+      "Grant building access badge"
+    ],
+    "typicalManualOnboardingTimeMin": 132
+  },
+  {
+    "roleName": "Customer Support Specialist",
+    "department": "Support",
+    "requiredChannels": ["Support — General", "Support — Escalations", "All-Company Announcements"],
+    "requiredResources": ["Desk — Support Floor", "Help Desk Software License"],
+    "requiredChecklistItems": [
+      "Create Microsoft 365 mailbox",
+      "Assign Teams channels",
+      "Assign software licenses",
+      "Set up VPN/security access",
+      "Add to relevant distribution lists",
+      "Post welcome message",
+      "Assign desk/workspace",
+      "Order equipment (laptop, monitor)",
+      "Schedule first-day orientation",
+      "Add to payroll system",
+      "Assign onboarding buddy",
+      "Grant building access badge"
+    ],
+    "typicalManualOnboardingTimeMin": 147
+  },
+  {
+    "roleName": "Office Administrator",
+    "department": "Operations",
+    "requiredChannels": ["All-Company Announcements"],
+    "requiredResources": ["Desk — Marketing Floor"],
+    "requiredChecklistItems": [
+      "Create Microsoft 365 mailbox",
+      "Assign Teams channels",
+      "Add to relevant distribution lists",
+      "Post welcome message",
+      "Assign desk/workspace",
+      "Order equipment (laptop, monitor)",
+      "Schedule first-day orientation",
+      "Add to payroll system",
+      "Assign onboarding buddy",
+      "Grant building access badge"
+    ],
+    "typicalManualOnboardingTimeMin": 117
+  }
+]
