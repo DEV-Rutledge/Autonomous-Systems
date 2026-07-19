@@ -1,6 +1,6 @@
 ---
 title: Microsoft Account & Azure Setup Guide
-version: 0.1.0
+version: 0.2.0
 status: draft
 author: Ryan Rutledge
 last_updated: 2026-07-19
@@ -86,13 +86,17 @@ This is the part flagged as unverified in [`PROJECT_CONTEXT.md`](../PROJECT_CONT
 ## Phase 5: Create the Azure Function App
 
 1. In the Azure Portal, click **Create a resource** → search **Function App** → **Create**
-2. Key settings:
+2. **Watch for a "Select a hosting option" screen before Basics** — it may default to **Flex Consumption**. On a Free Trial subscription, Flex Consumption fails at creation time with "Free trial subscription is not supported for Flex Consumption" (hit this directly, 2026-07-19). **Pick the "Consumption (Serverless)" card instead** — it works on a free trial, and its free grant is actually larger (1M requests + 400,000 GB-s/month, vs. Flex Consumption's 250,000 requests + 100,000 GB-s/month). Classic Consumption is labeled "legacy" by Microsoft but isn't retiring until September 2028 — irrelevant at this stage.
+3. Key Basics settings:
+   - **Resource Group:** create a new one, named after the venture (e.g. "Rutledge-Tech") to keep everything organized together
    - **Runtime stack:** Node.js
-   - **Version:** 20 LTS (or latest LTS available)
-   - **Hosting plan:** **Consumption (Serverless)** — this is what maps to the free 1M-requests/month grant; don't pick "Premium" or "Dedicated"
+   - **Version:** latest LTS available (24 LTS as of 2026-07-19) — this project only requires Node ≥18, so any current LTS works
    - **Region:** whichever is closest to you
-3. This also prompts you to create (or reuse) a **Storage Account** — required by Azure Functions for internal bookkeeping, costs pennies at this scale, effectively free for a demo
-4. Once created, you don't need to touch this resource directly yet — deployment happens later, once the code's ready to go live
+   - **Instance size** (if shown): pick the smallest available (512 MB) — this Function does lightweight network I/O, not memory-heavy work, so the smallest size is plenty and keeps usage as far as possible from the free-grant ceiling
+   - **Zone redundancy:** Disabled — costs more, not needed for a dev/demo app
+4. This also prompts you to create (or reuse) a **Storage Account** — required by Azure Functions for internal bookkeeping, costs pennies at this scale, effectively free for a demo
+5. Once created, you don't need to touch this resource directly yet — deployment happens later, once the code's ready to go live
+6. **Do not click "Upgrade to pay-as-you-go"** anywhere in this process — classic Consumption works fine on the Free Trial subscription without it, and upgrading isn't needed for anything in this venture right now
 
 **Checkpoint:** the Function App resource shows as "Running" in the Azure Portal.
 
