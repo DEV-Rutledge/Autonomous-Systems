@@ -1,6 +1,6 @@
 ---
 title: ABOS Multi-Year Roadmap
-version: 0.1.0
+version: 0.2.0
 status: foundation
 author: Ryan Rutledge
 last_updated: 2026-07-18
@@ -59,7 +59,7 @@ Note: Phase 4 onward is not a hard cap at three businesses — see [Long-Term](#
 
 **Duration:** 60 days
 
-**Goal:** Launch first AI SaaS product (business emerges from `Businesses/00-Incubator/` after passing the validation pipeline — see [Architecture.md](Architecture.md#incubator-pipeline))
+**Goal:** Launch first AI SaaS product (venture emerges from `ventures/00-incubator/` after passing the validation pipeline — see [Architecture.md](Architecture.md#incubator-pipeline))
 
 **Target:** $1,000 MRR
 
@@ -95,7 +95,7 @@ Operate multiple businesses simultaneously; shared infrastructure and playbooks 
 
 Beyond the numbered phases, ABOS is treated as a living system rather than a fixed five-business plan:
 
-- Continue adding new businesses as `Businesses/06-...`, `07-...`, etc.
+- Continue adding new ventures as `ventures/02-...`, `03-...`, etc., named only after clearing the incubator
 - Acquire existing small businesses and bring them under the same operating model
 - Build reusable AI agents that can be deployed across businesses
 - Create a marketplace for shared components (prompts, automations, templates)

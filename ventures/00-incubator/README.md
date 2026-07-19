@@ -1,6 +1,6 @@
 ---
 title: Incubator — AI Venture Studio
-version: 0.1.0
+version: 0.2.0
 status: foundation
 author: Ryan Rutledge
 last_updated: 2026-07-18
@@ -14,7 +14,7 @@ related:
 
 # 00 — Incubator
 
-The AI venture studio for ABOS. Every new business idea — no exceptions — starts here and works through the same pipeline before it earns its own numbered folder under `Businesses/`.
+The AI venture studio for ABOS. Every new venture idea — no exceptions — starts here and works through the same pipeline before it earns its own numbered folder under `ventures/`.
 
 ## Table of Contents
 
@@ -66,7 +66,7 @@ Ideas that don't clear stage 11 stay documented here as a record of what was con
 Each new idea gets its own subfolder:
 
 ```
-Businesses/00-Incubator/
+ventures/00-incubator/
 ├── README.md
 ├── IdeaValidationChecklist.md
 ├── MarketResearchTemplate.md
@@ -80,6 +80,6 @@ Businesses/00-Incubator/
 ```
 
 1. Copy the three templates into a new `Ideas/<idea-slug>/` folder and fill them in as the idea moves through stages 1–11.
-2. If the scorecard recommends **Build**, promote the idea: scaffold `Businesses/NN-Business-Name/` from [Templates/](../../Templates/) and copy `LaunchChecklist.md` into it for stage 13.
+2. If the scorecard recommends **Build**, promote the idea: scaffold `ventures/NN-venture-slug/` from [Templates/](../../Templates/) using the deep taxonomy in [Architecture.md § Venture Folder Anatomy](../../Architecture.md#venture-folder-anatomy), and copy `LaunchChecklist.md` into its `tasks/` folder for stage 13.
 3. If the recommendation is **Reject**, leave the filled-in idea folder in place as a record — don't delete it.
 4. If the recommendation is **Revisit**, leave a note in the idea folder on what would need to change to reconsider it later.

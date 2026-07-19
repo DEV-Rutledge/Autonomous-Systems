@@ -1,6 +1,6 @@
 ---
 title: ABOS Development Standards
-version: 0.1.0
+version: 0.2.0
 status: foundation
 author: Ryan Rutledge
 last_updated: 2026-07-18
@@ -38,9 +38,10 @@ Every Markdown file in this repository should include:
 
 ## File & Folder Naming
 
-- Folders: `PascalCase` for top-level concept folders (`Businesses/`, `Shared/`), `kebab-case` or `NN-Title-Case` for specific instances (`00-Incubator`, `Prompt-Library`)
+- Folders: `PascalCase` for top-level concept folders at the repo root (`ventures/` and its contents are the exception — see below — `Shared/`), `kebab-case` or `NN-Title-Case` for other specific instances (`Prompt-Library`)
+- `ventures/` and everything under it is all-lowercase-kebab-case (`ventures/00-incubator/`, `ventures/01-lead-engine/`, and its subfolders `docs/`, `prompts/`, `architecture/`, `automation/`, `api/`, `database/`, `deployment/`, `marketing/`, `finance/`, `sales/`, `legal/`, `research/`, `tasks/`, `diagrams/`) — this is the one deliberate break from PascalCase, matching how real software companies name repo paths
 - Files: `PascalCase.md` for docs (`BusinessPlan.md`, `DECISIONS.md` is the one all-caps exception, matching the agent-context file convention below)
-- Numbered business folders always use two-digit prefixes (`01-`, `02-`, ... `10-`) so they sort correctly past nine businesses
+- Numbered venture folders always use two-digit prefixes (`01-`, `02-`, ... `10-`) so they sort correctly past nine ventures, and are named only after clearing the incubator (no speculative placeholder names)
 
 ## Versioning
 

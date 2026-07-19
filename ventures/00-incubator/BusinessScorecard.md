@@ -1,6 +1,6 @@
 ---
 title: Business Scorecard
-version: 0.1.0
+version: 0.2.0
 status: foundation
 author: Ryan Rutledge
 last_updated: 2026-07-18
@@ -33,4 +33,4 @@ Score each metric 1–10 based on the completed market research.
 
 **Build / Revisit / Reject**
 
-Copy this into `Ideas/<idea-slug>/Scorecard.md` per idea. A **Build** recommendation promotes the idea to `Businesses/NN-Business-Name/` and moves it into stage 12 of the pipeline — see [README.md § How to Use This Folder](README.md#how-to-use-this-folder).
+Copy this into `Ideas/<idea-slug>/Scorecard.md` per idea. A **Build** recommendation promotes the idea to `ventures/NN-venture-slug/` and moves it into stage 12 of the pipeline — see [README.md § How to Use This Folder](README.md#how-to-use-this-folder).

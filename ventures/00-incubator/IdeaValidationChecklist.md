@@ -1,6 +1,6 @@
 ---
 title: Idea Validation Checklist
-version: 0.1.0
+version: 0.2.0
 status: foundation
 author: Ryan Rutledge
 last_updated: 2026-07-18

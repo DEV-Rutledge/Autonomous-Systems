@@ -1,6 +1,6 @@
 ---
 title: AI Business Operating System (ABOS)
-version: 0.1.0
+version: 0.3.0
 status: foundation
 author: Ryan Rutledge
 last_updated: 2026-07-18
@@ -89,16 +89,12 @@ Autonomous Systems/
 ├── DevelopmentStandards.md    # Coding, docs, and repo conventions
 ├── TechStack.md               # Approved tools and services
 │
-├── Businesses/
-│   ├── 00-Incubator/          # Every new idea starts here — see below
-│   ├── 01-Autonomous-LeadGen-SaaS/
-│   ├── 02-AI-Agent-Subscriptions/
-│   ├── 03-Vertical-AI-SaaS/
-│   ├── 04-Digital-Products/
-│   └── 05-Autonomous-Developer-Tools/
-│   # New businesses are added as 06, 07, ... — this list is not a cap
+├── ventures/
+│   ├── 00-incubator/          # Every new idea starts here — see below
+│   └── 01-lead-engine/        # First validated venture — see Architecture.md for its deep taxonomy
+│   # New ventures are added as 02-..., 03-..., named only after clearing the incubator — no fixed cap
 │
-├── Shared/                    # Reusable, cross-business assets
+├── Shared/                    # Reusable, cross-venture assets
 │   ├── Prompt-Library/
 │   ├── Make-Scenarios/
 │   ├── Claude-Prompts/
@@ -106,17 +102,17 @@ Autonomous Systems/
 │   ├── Email-Templates/
 │   └── Contracts/
 │
-├── Infrastructure/            # Cross-business infra notes (hosting, DNS, secrets mgmt)
+├── Infrastructure/            # Cross-venture infra notes (hosting, DNS, secrets mgmt)
 ├── AI/                        # Model usage notes, agent configs, eval logs
-├── Marketing/                 # Cross-business marketing playbooks
-├── Sales/                     # Cross-business sales playbooks
+├── Marketing/                 # Cross-venture marketing playbooks
+├── Sales/                     # Cross-venture sales playbooks
 ├── Deployment/                # CI/CD and release process docs
 ├── Documentation/             # Meta-documentation about this repo itself
-├── Templates/                 # Blank templates used to scaffold new businesses
+├── Templates/                 # Blank templates used to scaffold new ventures
 └── Resources/                 # Reference material, research, swipe files
 ```
 
-**Design note:** `Marketing/` and `Sales/` live at the repo root as the canonical home for cross-business playbooks. `Shared/` is reserved for reusable *build* assets (prompts, automation scenarios, contracts, templates) rather than strategy docs, to avoid the two trees drifting into duplicates of the same content.
+**Design note:** `Marketing/` and `Sales/` live at the repo root as the canonical home for cross-venture playbooks. `Shared/` is reserved for reusable *build* assets (prompts, automation scenarios, contracts, templates) rather than strategy docs, to avoid the two trees drifting into duplicates of the same content.
 
 ## Business Requirements
 
@@ -139,8 +135,8 @@ The repository itself is versioned as it grows:
 |---|---|
 | 0.1 | Repository Foundation |
 | 0.2 | Shared Components |
-| 0.3 | Business #1 |
-| 0.4 | Business #2 |
+| 0.3 | Venture #1 |
+| 0.4 | Venture #2 |
 | ... | ... |
 | 1.0 | Launch Ready |
 
@@ -148,7 +144,7 @@ See [Roadmap.md](Roadmap.md) for the full phase breakdown.
 
 ## Where to Start
 
-Every new business idea — no exceptions — starts in [`Businesses/00-Incubator/`](Businesses/00-Incubator/) and goes through the validation pipeline before it earns its own numbered folder. See `Businesses/00-Incubator/README.md`.
+Every new venture idea — no exceptions — starts in [`ventures/00-incubator/`](ventures/00-incubator/) and goes through the validation pipeline before it earns its own numbered folder. See [`ventures/00-incubator/README.md`](ventures/00-incubator/README.md).
 
 ## Related Documents
 
