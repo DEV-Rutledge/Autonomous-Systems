@@ -1,6 +1,6 @@
 ---
 title: Onboarding Demo — Airtable Schema
-version: 0.2.0
+version: 0.3.0
 status: draft
 author: Ryan Rutledge
 last_updated: 2026-07-19
@@ -147,13 +147,16 @@ erDiagram
 
 ## Computed Fields (Manual Setup)
 
-[`../src/scripts/createAirtableSchema.ts`](../src/scripts/createAirtableSchema.ts) creates every table, every plain field, and every link field automatically. It deliberately does **not** create rollup/lookup/formula fields — those are few in number, need visual verification in the Airtable UI anyway, and the API payloads for cross-hop lookups are easy to get subtly wrong with no way to test blind. Add these six fields by hand after running the script, in this order (each depends on the one before it existing):
+[`../src/scripts/createAirtableSchema.ts`](../src/scripts/createAirtableSchema.ts) creates every table, every plain field, and every link field automatically. It deliberately does **not** create rollup/lookup/formula fields — those are few in number, need visual verification in the Airtable UI anyway, and the API payloads for cross-hop lookups are easy to get subtly wrong with no way to test blind. Add these fields by hand after running the script, in this order (each depends on the one before it existing):
 
 1. **New Hires → `Role Baseline Time (min)`** — field type **Lookup**, link field `Role`, field to look up `Typical Manual Onboarding Time (min)`.
 2. **New Hires → `Time To Complete (min)`** — field type **Formula**: `DATETIME_DIFF({Bot Completed At}, {Bot Started At}, 'minutes')`.
-3. **New Hires → `Onboarding Progress %`** — field type **Rollup**, link field `Onboarding Checklist` *(note: this reverse link field is auto-created on New Hires once you add the "New Hire" link field on Onboarding Checklist in the script's link-field phase — it'll already exist by the time you get here, just look for it)*, field to roll up `Status`, aggregation `PERCENT` where `Status = "Complete"` (Airtable's rollup formula field: use `COUNTA(values)` style — simplest working version: rollup field on `Status`, formula `COUNTIF(values, "Complete") / COUNTA(values)`, format as percent.
+3. **`Onboarding Progress %` — three fields, not one.** Airtable's rollup aggregation formula only supports array functions (`SUM`, `COUNTA`, `COUNTALL`, `AND`, `OR`, etc.) — **not** conditional functions like `COUNTIF`, which fails with "Unknown function names." Conditional counting needs the rollup's own filter toggle instead:
+   - **New Hires → `Complete Checklist Count`** — field type **Rollup**, link field `Onboarding Checklist` *(auto-created as the reverse of the "New Hire" link field added to Onboarding Checklist in the script's link-field phase — look for it, don't recreate it)*, turn on "Only include linked records that meet certain conditions" → `Status` = `Complete`, field to roll up `Status`, aggregation `COUNTALL(values)`.
+   - **New Hires → `Total Checklist Count`** — same **Rollup** setup, no condition, field to roll up `Status`, aggregation `COUNTALL(values)`.
+   - **New Hires → `Onboarding Progress %`** — field type **Formula**: `IF({Total Checklist Count} = 0, 0, {Complete Checklist Count} / {Total Checklist Count})`, formatted as Percent. The `IF` guard avoids divide-by-zero before any checklist items exist for a hire yet.
 4. **ROI Log → `Manual Baseline Time (min)`** — field type **Lookup**, link field `New Hire`, field to look up `Role Baseline Time (min)` (the field from step 1).
 5. **ROI Log → `Actual Bot Time (min)`** — field type **Lookup**, link field `New Hire`, field to look up `Time To Complete (min)` (the field from step 2).
 6. **ROI Log → `Time Saved (min)`** then **`Estimated $ Saved`** — both **Formula** fields, per the formulas in the [ROI Log table](#table-roi-log) above.
 
-After these six, spot-check one New Hires record end to end (Role → Role Baseline Time → visible; Bot Started/Completed At filled in → Time To Complete computes) before running the seed script against the full base.
+After these, spot-check one New Hires record end to end (Role → Role Baseline Time → visible; Bot Started/Completed At filled in → Time To Complete computes) before running the seed script against the full base.
