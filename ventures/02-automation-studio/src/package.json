@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "func start",
+    "create-schema": "ts-node scripts/createAirtableSchema.ts",
     "seed": "ts-node scripts/seedAirtable.ts",
     "lint": "eslint . --ext .ts"
   },

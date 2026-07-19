@@ -1,9 +1,9 @@
 ---
 title: Onboarding Demo — Airtable Schema
-version: 0.1.0
+version: 0.2.0
 status: draft
 author: Ryan Rutledge
-last_updated: 2026-07-18
+last_updated: 2026-07-19
 related:
   - ../architecture/TECHNICAL_ARCHITECTURE.md
   - ../research/MARKET_RESEARCH.md
@@ -12,9 +12,9 @@ related:
 
 # Onboarding Demo — Airtable Schema
 
-The single demo base backing the new-hire onboarding agent — see [`ventures/02-automation-studio/DECISIONS.md § Build one demo, targeting one niche`](../DECISIONS.md#build-one-demo-targeting-one-niche--not-multiple-airtable-bases-across-business-types) for why this is the only base being built right now.
+The demo base backing the onboarding module (module 1) — see [`ventures/02-automation-studio/DECISIONS.md § Build one demo, targeting one niche`](../DECISIONS.md#build-one-demo-targeting-one-niche--not-multiple-airtable-bases-across-business-types) for why this stayed one demo rather than many.
 
-**Base name suggestion:** `Onboarding Agent Demo — [Prospect Company Name]` — clone this base per prospect during sales conversations rather than maintaining one shared demo, so each pitch can use the prospect's own department/role names.
+**Live base:** `Autonomous Systems Rutledgetech` (created 2026-07-19). Built via [`../src/scripts/createAirtableSchema.ts`](../src/scripts/createAirtableSchema.ts) — see that script's usage notes and [Computed Fields (Manual Setup)](#computed-fields-manual-setup) below for the handful of fields it doesn't create. When cloning per-prospect for a sales demo later, rename the clone `Onboarding Agent Demo — [Prospect Company Name]` rather than editing this shared base directly.
 
 ## Table of Contents
 
@@ -27,6 +27,7 @@ The single demo base backing the new-hire onboarding agent — see [`ventures/02
 - [Table: Onboarding Checklist (Instances)](#table-onboarding-checklist-instances)
 - [Table: ROI Log](#table-roi-log)
 - [Entity Relationships](#entity-relationships)
+- [Computed Fields (Manual Setup)](#computed-fields-manual-setup)
 
 ## Design Principles
 
@@ -48,12 +49,15 @@ The core table — one row per person being onboarded.
 | Manager Name | Single line text | |
 | Manager Email | Email | |
 | Status | Single select | Not Started / In Progress / Complete |
-| Onboarding Progress % | Rollup | % of linked Onboarding Checklist items marked Complete |
+| Onboarding Progress % | Rollup | % of linked Onboarding Checklist items marked Complete — **manual setup, see [below](#computed-fields-manual-setup)** |
 | Teams Groups Assigned | Link to Teams Channels & Groups | Multiple; populated by the agent, not manually |
 | Resources Assigned | Link to Rooms & Resources | Multiple; populated by the agent |
 | Bot Started At | Date (with time) | Set when the agent begins processing this hire |
 | Bot Completed At | Date (with time) | Set when all automated steps finish |
-| Time To Complete (min) | Formula | `DATETIME_DIFF({Bot Completed At}, {Bot Started At}, 'minutes')` |
+| Time To Complete (min) | Formula | `DATETIME_DIFF({Bot Completed At}, {Bot Started At}, 'minutes')` — **manual setup, see [below](#computed-fields-manual-setup)** |
+| Role Baseline Time (min) | Lookup | From `Role` § `Typical Manual Onboarding Time (min)` — **manual setup**; exists so ROI Log can reach the baseline time in one hop instead of two |
+
+Note: the script creates `Role`, `Teams Groups Assigned`, and `Resources Assigned` as link fields; the three rows above marked "manual setup" are added by hand afterward per [Computed Fields (Manual Setup)](#computed-fields-manual-setup).
 
 ## Table: Role Templates
 
@@ -120,10 +124,10 @@ The table that makes the sales pitch concrete — one row per completed onboardi
 |---|---|---|
 | Date | Date | |
 | New Hire | Link to New Hires | |
-| Manual Baseline Time (min) | Lookup | From the hire's Role Template |
-| Actual Bot Time (min) | Lookup | From New Hires § Time To Complete |
-| Time Saved (min) | Formula | `{Manual Baseline Time (min)} - {Actual Bot Time (min)}` |
-| Estimated $ Saved | Formula | `({Time Saved (min)} / 60) * 65` — $65/hr blended IT+HR rate, adjustable per prospect's actual loaded labor cost |
+| Manual Baseline Time (min) | Lookup | From `New Hire` § `Role Baseline Time (min)` — **manual setup** |
+| Actual Bot Time (min) | Lookup | From `New Hire` § `Time To Complete (min)` — **manual setup** |
+| Time Saved (min) | Formula | `{Manual Baseline Time (min)} - {Actual Bot Time (min)}` — **manual setup** |
+| Estimated $ Saved | Formula | `({Time Saved (min)} / 60) * 65` — $65/hr blended IT+HR rate, adjustable per prospect's actual loaded labor cost — **manual setup** |
 | Notes | Long text | |
 
 ## Entity Relationships
@@ -138,3 +142,16 @@ erDiagram
     ONBOARDING_CHECKLIST }o--|| CHECKLIST_LIBRARY : "instance of"
     NEW_HIRES ||--o| ROI_LOG : "logged in"
 ```
+
+## Computed Fields (Manual Setup)
+
+[`../src/scripts/createAirtableSchema.ts`](../src/scripts/createAirtableSchema.ts) creates every table, every plain field, and every link field automatically. It deliberately does **not** create rollup/lookup/formula fields — those are few in number, need visual verification in the Airtable UI anyway, and the API payloads for cross-hop lookups are easy to get subtly wrong with no way to test blind. Add these six fields by hand after running the script, in this order (each depends on the one before it existing):
+
+1. **New Hires → `Role Baseline Time (min)`** — field type **Lookup**, link field `Role`, field to look up `Typical Manual Onboarding Time (min)`.
+2. **New Hires → `Time To Complete (min)`** — field type **Formula**: `DATETIME_DIFF({Bot Completed At}, {Bot Started At}, 'minutes')`.
+3. **New Hires → `Onboarding Progress %`** — field type **Rollup**, link field `Onboarding Checklist` *(note: this reverse link field is auto-created on New Hires once you add the "New Hire" link field on Onboarding Checklist in the script's link-field phase — it'll already exist by the time you get here, just look for it)*, field to roll up `Status`, aggregation `PERCENT` where `Status = "Complete"` (Airtable's rollup formula field: use `COUNTA(values)` style — simplest working version: rollup field on `Status`, formula `COUNTIF(values, "Complete") / COUNTA(values)`, format as percent.
+4. **ROI Log → `Manual Baseline Time (min)`** — field type **Lookup**, link field `New Hire`, field to look up `Role Baseline Time (min)` (the field from step 1).
+5. **ROI Log → `Actual Bot Time (min)`** — field type **Lookup**, link field `New Hire`, field to look up `Time To Complete (min)` (the field from step 2).
+6. **ROI Log → `Time Saved (min)`** then **`Estimated $ Saved`** — both **Formula** fields, per the formulas in the [ROI Log table](#table-roi-log) above.
+
+After these six, spot-check one New Hires record end to end (Role → Role Baseline Time → visible; Bot Started/Completed At filled in → Time To Complete computes) before running the seed script against the full base.

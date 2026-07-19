@@ -1,9 +1,9 @@
 ---
 title: Onboarding Agent — Source Code
-version: 0.1.0
+version: 0.2.0
 status: draft
 author: Ryan Rutledge
-last_updated: 2026-07-18
+last_updated: 2026-07-19
 related:
   - ../architecture/TECHNICAL_ARCHITECTURE.md
   - ../database/AIRTABLE_SCHEMA.md
@@ -32,17 +32,21 @@ src/
 │   ├── teamsBot.ts           # Teams AI Library @mention handler (skeleton, needs app registration to run live)
 │   └── adaptiveCard.ts       # Builds + (eventually) posts the live checklist card
 └── scripts/
-    └── seedAirtable.ts       # Populates a fresh base from database/seed-data/*.json
+    ├── createAirtableSchema.ts   # Creates all 7 tables + fields via the Airtable Meta API
+    └── seedAirtable.ts           # Populates the base from database/seed-data/*.json
 ```
 
 ## Getting It Running Locally
 
-1. **Create the Airtable base** by hand, matching [`../database/AIRTABLE_SCHEMA.md`](../database/AIRTABLE_SCHEMA.md) field-for-field (table/field names are referenced literally in code — typos will break the API calls silently returning `undefined`).
-2. **Install dependencies:** `npm install` from this `src/` directory.
-3. **Copy `local.settings.json.example` → `local.settings.json`**, fill in a real `AIRTABLE_API_KEY` (personal access token, scoped to just this base) and `AIRTABLE_BASE_ID`. This file is gitignored — never commit it.
-4. **Seed the base:** `npm run seed` — populates the 6 sample new hires and their supporting lookup data from [`../database/seed-data/`](../database/seed-data/).
-5. **Run the Function locally:** `npm run build && npm start` (requires [Azure Functions Core Tools](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local) installed separately).
-6. **Test the orchestrator** by POSTing `{ "newHireRecordId": "<a New Hires record ID from the seeded base>" }` to the local function URL — watch it resolve the role, log the (currently stubbed) Teams/resource assignment calls, create checklist instances, and write the ROI Log entry.
+Live base: `Autonomous Systems Rutledgetech`.
+
+1. **Install dependencies:** `npm install` from this `src/` directory.
+2. **Copy `local.settings.json.example` → `local.settings.json`**, fill in a real `AIRTABLE_API_KEY` and `AIRTABLE_BASE_ID` for the base above. This file is gitignored — never commit it. The API key needs `schema.bases:write` scope for step 3 (a separate, narrower-scoped PAT is fine if your existing one doesn't have it).
+3. **Create the schema:** `npm run create-schema` — builds all 7 tables and their plain/link fields automatically. Run this **once**, against an **empty** base (see the script's own doc comment — it doesn't check for existing tables).
+4. **Add the computed fields by hand** — six rollup/lookup/formula fields the script deliberately doesn't create; see [`../database/AIRTABLE_SCHEMA.md § Computed Fields (Manual Setup)`](../database/AIRTABLE_SCHEMA.md#computed-fields-manual-setup) for the exact list and why.
+5. **Seed the base:** `npm run seed` — populates the 6 sample new hires and their supporting lookup data from [`../database/seed-data/`](../database/seed-data/).
+6. **Run the Function locally:** `npm run build && npm start` (requires [Azure Functions Core Tools](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local) installed separately).
+7. **Test the orchestrator** by POSTing `{ "newHireRecordId": "<a New Hires record ID from the seeded base>" }` to the local function URL — watch it resolve the role, log the (currently stubbed) Teams/resource assignment calls, create checklist instances, and write the ROI Log entry.
 
 ## What's Real vs. Stubbed
 
