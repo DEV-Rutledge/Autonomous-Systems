@@ -14,6 +14,12 @@ related:
 
 Chronological record of what shipped, in order. For *why* something changed, see [DECISIONS.md](DECISIONS.md); for what's true right now, see [CURRENT_STATE.md](CURRENT_STATE.md).
 
+## 0.8 — Automation Studio Positioning Sharpened; ChatGPT Excluded (2026-07-18)
+
+- Sharpened `ventures/02-automation-studio` from generic Microsoft 365/Teams/Azure automation to a specific product: custom AI agents embedded in Teams acting on real business data (Airtable-first), after research showed plain integrations are commoditized (free via Zapier/Make/n8n) but AI-agent builds price at $75K–150K agency-tier
+- Added Microsoft's native agent tooling findings (Teams AI Library, Copilot Studio multi-agent framework, Azure Functions repositioned for agents at Build 2026) and target-industry research (marketing agencies are Airtable's largest user segment) to `research/MARKET_RESEARCH.md`
+- Excluded ChatGPT from the repo workflow per Ryan's explicit direction — no more structured AI-handoff messages; Claude Code operates directly on his instructions going forward
+
 ## 0.7 — Venture #2 (Automation Studio) Promoted (2026-07-18)
 
 - Ran a direct interview with Ryan (time availability, client-facing tolerance, maintenance appetite, gut interest) to select the best-fit idea from the 0.6 batch
